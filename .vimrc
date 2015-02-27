@@ -8,6 +8,7 @@ set ruler             " Show line and column number
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Unsaved buffers are put in the background
 set wildmenu          " Set wildmenu enhanced command line completion
+set showmatch         " Show matching parens
 
 syntax enable         " Turn on syntax highlighting allowing local overrides
 colorscheme molokai
@@ -96,22 +97,22 @@ command! -range=% Fixwhite call <SID>FixWhitespace(<line1>,<line2>)     " Run :F
 "" Appending Closing Characters
 ""
 
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-
-inoremap        (  ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     (
-inoremap ()     ()
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-inoremap ''     '
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
-inoremap ""     "
+" inoremap {      {}<Left>
+" inoremap {<CR>  {<CR>}<Esc>O
+" inoremap {{     {
+" inoremap {}     {}
+" inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+"
+" inoremap        (  ()<Left>
+" inoremap (<CR>  (<CR>)<Esc>O
+" inoremap ((     (
+" inoremap ()     ()
+" inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+"
+" inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+" inoremap ''     '
+" inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+" inoremap ""     "
 
 
 ""
