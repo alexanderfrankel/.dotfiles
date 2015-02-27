@@ -1,6 +1,9 @@
 # Add ~/.rbenv/bin to $PATH for access to the rbenv command-line utility
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+# Add ~/bin to $PATH for access to personal scripts
+export PATH="$HOME/bin:$PATH"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -22,7 +25,7 @@ txtblu='\e[0;34m' # Blue
 txtpur='\e[0;35m' # Purple
 txtcyn='\e[0;36m' # Cyan
 txtwht='\e[0;37m' # White
- 
+
 bldblk='\e[1;30m' # Black - Bold
 bldred='\e[1;31m' # Red
 bldgrn='\e[1;32m' # Green
@@ -31,7 +34,7 @@ bldblu='\e[1;34m' # Blue
 bldpur='\e[1;35m' # Purple
 bldcyn='\e[1;36m' # Cyan
 bldwht='\e[1;37m' # White
- 
+
 unkblk='\e[4;30m' # Black - Underline
 undred='\e[4;31m' # Red
 undgrn='\e[4;32m' # Green
@@ -40,7 +43,7 @@ undblu='\e[4;34m' # Blue
 undpur='\e[4;35m' # Purple
 undcyn='\e[4;36m' # Cyan
 undwht='\e[4;37m' # White
- 
+
 bakblk='\e[40m'   # Black - Background
 bakred='\e[41m'   # Red
 badgrn='\e[42m'   # Green
@@ -49,7 +52,7 @@ bakblu='\e[44m'   # Blue
 bakpur='\e[45m'   # Purple
 bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
- 
+
 txtrst='\e[0m'    # Text Reset`
 
 # Load in the git branch prompt script.
