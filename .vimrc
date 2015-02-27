@@ -1,11 +1,4 @@
 ""
-"" Pathogen Config
-""
-
-execute pathogen#infect('plugins/{}')
-
-
-""
 "" Basic Setup
 ""
 
@@ -15,8 +8,6 @@ set ruler             " Show line and column number
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Unsaved buffers are put in the background
 set wildmenu          " Set wildmenu enhanced command line completion
-set laststatus=2      " Always include status line
-" set stl=%f\ %m\ %r\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
 
 syntax enable         " Turn on syntax highlighting allowing local overrides
 colorscheme molokai
@@ -29,6 +20,14 @@ highlight MatchParen ctermbg=darkgrey guibg=darkgrey
 
 nmap <silent>,ev :e $MYVIMRC<CR>
 nmap <silent>,sv :so $MYVIMRC<CR>
+
+
+""
+"" Status Line
+""
+
+set laststatus=2      " Always include status line
+set statusline=%f\ [%n]\ %m\ %r\%=%-8.(%l,%c%)\ [%p%%]
 
 
 ""
@@ -57,6 +56,15 @@ noremap <silent> ,mj <C-W>J
 
 " Equal windows...
 noremap <silent> ,= :wincmd =<cr>
+
+" Vertically split buffer...
+command! -nargs=1 Vsb call VsbFunction(<f-args>)
+
+function! VsbFunction (arg1)
+  execute 'vert sb' a:arg1
+endfunction
+
+
 ""
 "" Whitespace
 ""
@@ -89,13 +97,13 @@ command! -range=% Fixwhite call <SID>FixWhitespace(<line1>,<line2>)     " Run :F
 ""
 
 inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O<Tab>
+inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 inoremap {}     {}
 inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 
 inoremap        (  ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O<Tab>
+inoremap (<CR>  (<CR>)<Esc>O
 inoremap ((     (
 inoremap ()     ()
 inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
@@ -156,7 +164,15 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 "" Netrw Setup
 ""
 
-let g:netrw_banner=1
-let g:netrw_liststyle=0
-let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'
-autocmd FileType netrw setl bufhidden=wipe
+let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'   " Hide filetypes in explorer
+let g:netrw_alto = 1                            " Open hsplit below current using 'o'
+let g:netrw_altv = 1                            " Open vsplit right current using 'v'
+let g:netrw_keepdir = 0                         " Track browsing dir
+
+
+""
+"" Pathogen Config
+""
+
+execute pathogen#infect('plugins/{}')
+
