@@ -92,5 +92,4 @@ alias gd="git diff "
 alias rs="rails s "
 alias rc="rails c "
 
-alias g="vim"
 alias rebp="source ~/.bash_profile"
