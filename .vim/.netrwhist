@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users'
-let g:netrw_dirhist_2='/'
-let g:netrw_dirhist_3='/Users/alexanderfrankel/.ssh'
-let g:netrw_dirhist_4='/Users/alexanderfrankel/.config'
-let g:netrw_dirhist_5='/Users/alexanderfrankel/.config/configstore'
-let g:netrw_dirhist_6='/Users/alexanderfrankel/.ssh'
-let g:netrw_dirhist_7='/Users/alexanderfrankel/bin'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/alexanderfrankel/workspace/viewthespace'
+let g:netrw_dirhist_2='/Users/alexanderfrankel/workspace/viewthespace/app'
+let g:netrw_dirhist_3='/Users/alexanderfrankel/workspace/viewthespace/app/views'
+let g:netrw_dirhist_4='/Users/alexanderfrankel/workspace/viewthespace/app/views/spaces'
+let g:netrw_dirhist_5='/Users/alexanderfrankel/workspace/viewthespace'

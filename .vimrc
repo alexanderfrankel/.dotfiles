@@ -9,6 +9,7 @@ set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Unsaved buffers are put in the background
 set wildmenu          " Set wildmenu enhanced command line completion
 set showmatch         " Show matching parens
+set cursorline        " Highlight the current line
 
 syntax enable         " Turn on syntax highlighting allowing local overrides
 colorscheme molokai
@@ -18,6 +19,7 @@ filetype plugin on
 filetype indent on
 
 highlight MatchParen ctermbg=darkgrey guibg=darkgrey
+highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
 
 nmap <silent>,ev :e $MYVIMRC<CR>
 nmap <silent>,sv :so $MYVIMRC<CR>
@@ -139,7 +141,7 @@ endfunction"'")'"')"
 "" Searching
 ""
 
-"set hlsearch    " highlight matches
+" set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter

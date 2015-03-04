@@ -7,6 +7,8 @@ export PATH="$HOME/bin:$PATH"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
+
 # Add rbenv init to shell to enable shims and autocompletion
 eval "$(rbenv init -)"
 
@@ -68,7 +70,7 @@ print_before_the_prompt () {
 
 # PROMPT_COMMAND=print_before_the_prompt
 
-PS1='\n\[\e[0;34m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
+PS1='\n\[\e[0;36m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
 # ALIAS
 alias be="bundle exec "
@@ -93,3 +95,6 @@ alias rs="rails s "
 alias rc="rails c "
 
 alias rebp="source ~/.bash_profile"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
