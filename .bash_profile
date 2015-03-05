@@ -9,6 +9,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
 
+export EDITOR=vim
+
 # Add rbenv init to shell to enable shims and autocompletion
 eval "$(rbenv init -)"
 

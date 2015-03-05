@@ -1,4 +1,10 @@
 ""
+"" Pathogen Config
+""
+
+execute pathogen#infect('plugins/{}')
+
+""
 "" Basic Setup
 ""
 
@@ -172,10 +178,4 @@ let g:netrw_alto = 1                            " Open hsplit below current usin
 let g:netrw_altv = 1                            " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                         " Track browsing dir
 
-
-""
-"" Pathogen Config
-""
-
-execute pathogen#infect('plugins/{}')
 
