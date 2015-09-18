@@ -8,27 +8,66 @@ execute pathogen#infect('plugins/{}')
 "" Basic Setup
 ""
 
+"set nobackup
+"set backupdir=~/.vim/backup
+"set noswapfile
+"set directory=~/.vim/swap
+
+let mapleader = ","
+
 set nocompatible      " Use vim, no vi defaults
 set number            " Show line numbers
 set ruler             " Show line and column number
 set encoding=utf-8    " Set default encoding to UTF-8
 set hidden            " Unsaved buffers are put in the background
 set wildmenu          " Set wildmenu enhanced command line completion
-set showmatch         " Show matching parens
-set cursorline        " Highlight the current line
+"set showmatch         " Show matching parens
+set noshowmatch
+"set cursorline        " Highlight the current line
+set linebreak
 
 syntax enable         " Turn on syntax highlighting allowing local overrides
-colorscheme molokai
+set background=dark
+colorscheme solarized
+"let g:solarized_termcolors=256
+"colorscheme molokai
+set noerrorbells visualbell t_vb=
+
+" copy relative path to clipboard
+nnoremap ,cf :let @+=expand("%")<CR>
+" copy absolute path to clipboard
+nnoremap ,cF :let @+=expand("%:p")<CR>
+" copy file name path to clipboard
+nnoremap ,ct :let @+=expand("%:t")<CR>
+
 
 filetype on
 filetype plugin on
 filetype indent on
 
-highlight MatchParen ctermbg=darkgrey guibg=darkgrey
-highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
+let loaded_matchparen = 1
+highlight MatchParen ctermbg=darkgrey
+"highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
+highlight StatusLine ctermbg=lightblue
+highlight StatusLineNC ctermbg=lightred
+
+
 
 nmap <silent>,ev :e $MYVIMRC<CR>
 nmap <silent>,sv :so $MYVIMRC<CR>
+
+autocmd BufNewFile,BufRead *.skim set filetype=slim
+
+nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+nnoremap <silent> ,d :b#\|bd #<CR>
+nnoremap <silent> ,z :w\|:vsp\|:wincmd l\|:E<CR>
+nnoremap <silent> ,x :w\|:split\|:wincmd l\|:E<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
+nmap <silent>,p :b#<CR>
+
+"" AG searching
+let g:ackprg = 'ag --vimgrep'
 
 
 ""
@@ -36,7 +75,7 @@ nmap <silent>,sv :so $MYVIMRC<CR>
 ""
 
 set laststatus=2      " Always include status line
-set statusline=%f\ [%n]\ %m\ %r\%=%-8.(%l,%c%)\ [%p%%]
+set statusline=%F\ [%n]\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]\ [%p%%]
 
 
 ""
@@ -62,6 +101,23 @@ noremap <silent> ,mk <C-W>K
 noremap <silent> ,mh <C-W>H
 noremap <silent> ,mj <C-W>J
 
+" Maximizing and unmaximizing the window
+nnoremap ,o :call MaximizeToggle()<CR>
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
 
 " Equal windows...
 noremap <silent> ,= :wincmd =<cr>
@@ -147,10 +203,14 @@ endfunction"'")'"')"
 "" Searching
 ""
 
-" set hlsearch    " highlight matches
+set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
+nnoremap <C-l> :nohlsearch<CR><C-l>
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
+nnoremap n nzz
 
 
 ""
@@ -161,21 +221,49 @@ set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
 
 
-""
-"" NERDtree Setup
-""
+"
+" NERDtree Setup
+"
 
-" map <Leader>n :NERDTreeToggle<CR>      " NERDtree keymapping
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <Leader>n :NERDTreeToggle<CR>      " NERDtree keymapping
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"let NERDTreeHijackNetrw=1
 
 
 ""
 "" Netrw Setup
 ""
 
-let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'   " Hide filetypes in explorer
+let g:netrw_list_hide= '.*\.swp$,.*\.swo$,\~$,\.orig$'   " Hide filetypes in explorer
 let g:netrw_alto = 1                            " Open hsplit below current using 'o'
 let g:netrw_altv = 1                            " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                         " Track browsing dir
 
+""
+"" Vim-Gist Setup
+""
 
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_post_private = 1
+
+"""
+""" Ctrl P Setup
+"""
+
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+"""
+""" Command T Setup
+"""
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.swo
+  nnoremap <silent> <Leader>t :CommandT<CR>
+  nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+  let g:CommandTCancelMap='<C-t>'
+  let g:CommandTRefreshMap='<C-f>'
+  let g:CommandTMaxHeight = 30
+  let g:CommandTMaxFiles = 500000
+  let g:CommandTInputDebounce = 200
+  let g:CommandTMaxCachedDirectories = 10
+  let g:CommandTSmartCase = 1
