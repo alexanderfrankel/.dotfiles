@@ -1,0 +1,67 @@
+#########################################
+############ VIM CHEAT SHEET ############
+#########################################
+
+#########################################
+Motion Commands (:help motion.txt)
+#########################################
+
+h,j,k,l: left, down, up, right
+
+0: beginning of line
+$: end of line
+
+w,W,e,E: forward word movement
+b,B,ge,gE: backward word movement
+
+f,F,t,T: move to the character (; to repeat)
+
+CTRL + f: full page up
+CTRL + b: full page down
+CTRL + u: half page up
+CTRL + d: half page down
+
+H: jump to head line of screen
+M: jump to middle line of screen
+L: jump to last line of screen
+
+gg: jump to top line of buffer
+G: jump to bottom line of buffer
+<line-number>+G: jump to line
+
+]]: jump to next curly brace in column 0 at beginning of function
+[[: jump to previous curly brace in column 0 at beginning of function
+][: jump to next curly brace in column 0 at end of function
+[]: jump to previous curly brace in column 0 at end of function
+
+%: jump to matching curly brace (extend with matchit.vim)
+
+""""""""""""""""""""""""""""""""""""""
+Marks (:help marks)
+""""""""""""""""""""""""""""""""""""""
+:marks: view what marks are currently in system
+m + register: mark current line
+' + register: go to line of mark
+` + register: go to mark itself
+' + ': go to previous location line
+` + `: go to previous location itself
+
+
+#########################################
+Searching Commands
+#########################################
+
+/: regex search forward
+?: regex search backward
+/\<searchterm\>: bounded regex search forward
+?\<searchterm\>: bounded regex search backward
+
+*: search current word forward by bounded regex
+#: search current word backward by bounded regex
+
+g*: search current word forward by regex
+g#: search current word backward by regex
+
+n: next instance of match
+N: previous instance of match
+

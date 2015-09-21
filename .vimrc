@@ -2,7 +2,7 @@
 "" Pathogen Config
 ""
 
-execute pathogen#infect('plugins/{}')
+execute pathogen#infect()
 
 ""
 "" Basic Setup
@@ -75,7 +75,7 @@ let g:ackprg = 'ag --vimgrep'
 ""
 
 set laststatus=2      " Always include status line
-set statusline=%F\ [%n]\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]\ [%p%%]
+set statusline=%F\ [%n]\%{fugitive#statusline()}\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]\ [%p%%]
 
 
 ""
@@ -252,18 +252,19 @@ let g:gist_post_private = 1
 """ Ctrl P Setup
 """
 
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_regexp = 1
+let g:ctrlp_switch_buffer = 'E'
+let g:ctrlp_tabpage_position = 'c'
+let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$"'
+let g:ctrlp_max_depth = 30
+let g:ctrlp_max_files = 0
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_open_multiple_files = '1ri'
+let g:ctrlp_match_window = 'max:20'
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtDeleteWord()':      ['<c-w>'],
+  \ 'PrtClear()':           ['<c-u>'],
+  \ 'CreateNewFile()':      ['<c-y>']
+\ }
 
-"""
-""" Command T Setup
-"""
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.swo
-  nnoremap <silent> <Leader>t :CommandT<CR>
-  nnoremap <silent> <Leader>b :CommandTBuffer<CR>
-  let g:CommandTCancelMap='<C-t>'
-  let g:CommandTRefreshMap='<C-f>'
-  let g:CommandTMaxHeight = 30
-  let g:CommandTMaxFiles = 500000
-  let g:CommandTInputDebounce = 200
-  let g:CommandTMaxCachedDirectories = 10
-  let g:CommandTSmartCase = 1
