@@ -2,6 +2,18 @@
 ############ VIM CHEAT SHEET ############
 #########################################
 
+
+#########################################
+Basic Commands
+#########################################
+
+:e + filename: open file in current buffer
+:w: write file in current buffer
+:wall: write all files in all buffers
+q: quit
+q!: force quit (without saving)
+
+
 #########################################
 Motion Commands (:help motion.txt)
 #########################################
@@ -16,10 +28,10 @@ b,B,ge,gE: backward word movement
 
 f,F,t,T: move to the character (; to repeat)
 
-CTRL + f: full page up
-CTRL + b: full page down
-CTRL + u: half page up
-CTRL + d: half page down
+CTRL + f: scroll full page up
+CTRL + b: scroll full page down
+CTRL + u: scroll half page up
+CTRL + d: scroll half page down
 
 H: jump to head line of screen
 M: jump to middle line of screen
@@ -36,6 +48,18 @@ G: jump to bottom line of buffer
 
 %: jump to matching curly brace (extend with matchit.vim)
 
+zt: redraw current line at top of window
+zz: redraw current line at middle of window
+zb: redraw current line at bottom of window
+
+zl: scroll text horiz right
+zh: scroll text horiz left
+zL: scroll text horiz right half screen
+zH: scroll text horiz left half screen
+zs: scroll text horiz to position cursor at left side of screen
+ze: scroll text horiz to position cursor at right side of screen
+
+
 """"""""""""""""""""""""""""""""""""""
 Marks (:help marks)
 """"""""""""""""""""""""""""""""""""""
@@ -48,7 +72,7 @@ m + register: mark current line
 
 
 #########################################
-Searching Commands
+Search & Replace Commands
 #########################################
 
 /: regex search forward
@@ -64,4 +88,117 @@ g#: search current word backward by regex
 
 n: next instance of match
 N: previous instance of match
+
+:%s/<pattern>/<sub>/g: substitute pattern matches with sub
+:%s/<pattern>/<sub>/ge: substitute pattern matches with sub (no errors if pattern not found)
+:%s/<pattern>/<sub>/gc: substitute pattern matches with sub (confirm before making change)
+
+
+#########################################
+Edit Commands
+#########################################
+
+.: repeat last command
+
+i: insert mode at current cursor position
+I: insert mode at beginning of line
+a: insert mode after current cursor position
+A: insert mode at end of line
+o: insert mode line below
+O: insert mode line above
+
+x: deletes character under cursor
+X: deletes character before cursor
+dw: delete word
+de: delete to end of word
+dd: delete current line
+
+cw: change word
+C: change to end of line
+
+R: replace
+r: replace single character
+
+s: substitute
+S: substitute line from beginning of text
+
+yw: yank word
+yy: yank line
+Y: Yank line
+
+p: put after cursor
+P: put before cursor
+
+J: join line with space
+gJ: join line without space
+
+CTRL + n: open autocomplete dropdown
+
+:[range]/g/<pattern>/cmd: execute command on each line matching pattern
+:[range]/g!/<pattern>/cmd: execute command on each line NOT matching pattern
+
+
+#########################################
+Visual Mode
+#########################################
+
+v: visual mode by character
+V: visual mode by line
+CTRL + v: visual block mode
+gv: re-select area just selected
+
+
+#########################################
+Switching Files (:help ls) (:help args)
+#########################################
+
+:ls: list buffers
+:ls!: list buffers including unlisted
+
+:b + filename: switch to buffer
+:b + buffer number: switch to buffer
+:b#: switch to alternate buffer
+CTRL + ^: switch to alternate buffer
+:bn: switch to next buffer
+:bp: switch to prev buffer
+:bfirst: switch to first buffer in list
+:blast: switch to last buffer in list
+
+:bd: delete current buffer
+:bd + filename: delete buffer
+:<low_bound, high_bound>bd: delete range of buffers
+:%bd: delete all buffers
+
+:args: open args list of loaded files
+:wn: write and go to next in args list
+:n: move to next file in args list
+:rewind: go back to first file in args list
+
+:bufdo + command: repeat command over every buffer
+:tabdo + command: repeat command over every tab
+:windo + command: repeat command over every window
+
+
+#########################################
+Macros
+#########################################
+
+q + register: start recording macro and store in register
+q: stop recording
+
+number + @ + register: run macro number of times
+
+
+#########################################
+Vim Fugitive
+#########################################
+
+:Git + git command + %: execute git command on file in current buffer
+
+:Gwrite: stage file in current buffer
+:Gread: revert file in current buffer to last checked in version
+:Gremove: delete file in current buffer from repo
+:Gmove: rename file in current buffer
+:Gcommit: open commit window in split window
+:Gblame: open blame window in split window
 

@@ -1,0 +1,21 @@
+[user]
+	name = Alexander Frankel
+	email = alexxanderfrankel@gmail.com
+[github]
+	user = alexanderfrankel
+[core]
+	editor = vim
+[alias]
+  gs = status
+  ga = add
+  gaa = add --all
+  grm = rm
+  gvm = commit -m
+  gcv = commit -v
+  gl = log
+  gc = checkout
+  gcb = checkout -b
+  gp = push
+  gb = branch
+  gr = remote
+  gd = diff

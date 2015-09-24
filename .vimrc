@@ -33,6 +33,9 @@ colorscheme solarized
 "colorscheme molokai
 set noerrorbells visualbell t_vb=
 
+" Allow the cursor to go in to 'invalid' places
+set virtualedit=all
+
 " copy relative path to clipboard
 nnoremap ,cf :let @+=expand("%")<CR>
 " copy absolute path to clipboard
@@ -222,7 +225,7 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 
 
 "
-" NERDtree Setup
+" NERDtree
 "
 
 "map <Leader>n :NERDTreeToggle<CR>      " NERDtree keymapping
@@ -231,7 +234,7 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 
 
 ""
-"" Netrw Setup
+"" Netrw
 ""
 
 let g:netrw_list_hide= '.*\.swp$,.*\.swo$,\~$,\.orig$'   " Hide filetypes in explorer
@@ -240,7 +243,7 @@ let g:netrw_altv = 1                            " Open vsplit right current usin
 let g:netrw_keepdir = 0                         " Track browsing dir
 
 ""
-"" Vim-Gist Setup
+"" Vim-Gist
 ""
 
 let g:gist_clip_command = 'pbcopy'
@@ -249,7 +252,7 @@ let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 
 """
-""" Ctrl P Setup
+""" Ctrl P
 """
 
 let g:ctrlp_regexp = 1
@@ -267,4 +270,8 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtClear()':           ['<c-u>'],
   \ 'CreateNewFile()':      ['<c-y>']
 \ }
+
+"""
+""" Vim Rspec
+"""
 
