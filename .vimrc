@@ -1,83 +1,152 @@
 ""
-"" Pathogen Config
+"" Base Config
 ""
 
-execute pathogen#infect()
-
-""
-"" Basic Setup
-""
-
-"set nobackup
-"set backupdir=~/.vim/backup
-"set noswapfile
-"set directory=~/.vim/swap
-
+" Set ',' to leader key
 let mapleader = ","
 
+" Use vim, no vi defaults
 set nocompatible      " Use vim, no vi defaults
-set number            " Show line numbers
-set ruler             " Show line and column number
-set encoding=utf-8    " Set default encoding to UTF-8
-set hidden            " Unsaved buffers are put in the background
-set wildmenu          " Set wildmenu enhanced command line completion
-"set showmatch         " Show matching parens
-set noshowmatch
-"set cursorline        " Highlight the current line
-set linebreak
 
-syntax enable         " Turn on syntax highlighting allowing local overrides
-set background=dark
-colorscheme solarized
-"let g:solarized_termcolors=256
-"colorscheme molokai
-set noerrorbells visualbell t_vb=
+" Show line numbers
+set number
+
+" Show line and column number
+set ruler
+
+" Set default encoding to UTF-8
+set encoding=utf-8
+
+" Unsaved buffers are put in the background
+set hidden
+
+" Set wildmenu enhanced command line completion
+set wildmenu
+
+" Do not show matching parens
+set noshowmatch
 
 " Allow the cursor to go in to 'invalid' places
 set virtualedit=all
 
-" copy relative path to clipboard
-nnoremap ,cf :let @+=expand("%")<CR>
-" copy absolute path to clipboard
-nnoremap ,cF :let @+=expand("%:p")<CR>
-" copy file name path to clipboard
-nnoremap ,ct :let @+=expand("%:t")<CR>
+" Turn off error bells
+set noerrorbells visualbell t_vb=
 
+" Do not wrap lines
+set nowrap
 
-filetype on
-filetype plugin on
-filetype indent on
+" Smart line wrap
+set linebreak
 
+" Set tab to 2 spaces
+set tabstop=2
+
+" Set autoindent to 2 spaces
+set shiftwidth=2
+
+" Use spaces instead of tabs
+set expandtab
+
+" Allow backspace while in insert mode everywhere
+set backspace=indent,eol,start
+
+" Do not load pi_paren default plugin
 let loaded_matchparen = 1
+
+" Highlight the curent line
+"set cursorline
+
+"""
+""" Backup and Swap Files
+"""
+
+" Do not create backup files
+"set nobackup
+
+" Set backup file directory
+set backupdir^=~/.vim/_backup//    " where to put backup files.
+
+" Do not create swap files
+"set noswapfile
+
+"Set swap file directory
+set directory^=~/.vim/_temp//      " where to put swap files.
+
+
+""
+"" Colors
+""
+
+" Turn on syntax highlighting allowing local overrides
+syntax enable
+
+" Set dark background
+set background=dark
+
+" Set molokai colorscheme
+"colorscheme molokai
+
+" Set solarized colorscheme
+colorscheme solarized
+
+" Set solarized colorschem to 256 color
+" let g:solarized_termcolors=256
+
+" Match parens highlight color
 highlight MatchParen ctermbg=darkgrey
+
+" Cursor line highlight color
 "highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
+
+" Active status line text color
 highlight StatusLine ctermbg=lightblue
+
+" Inactive status line text color
 highlight StatusLineNC ctermbg=lightred
 
 
+""
+"" System Clipboard
+""
 
-nmap <silent>,ev :e $MYVIMRC<CR>
-nmap <silent>,sv :so $MYVIMRC<CR>
-
-autocmd BufNewFile,BufRead *.skim set filetype=slim
-
-nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
-nnoremap <silent> ,d :b#\|bd #<CR>
-nnoremap <silent> ,z :w\|:vsp\|:wincmd l\|:E<CR>
-nnoremap <silent> ,x :w\|:split\|:wincmd l\|:E<CR>
+" Copy visual selectio to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
 
-nmap <silent>,p :b#<CR>
+" Copy relative path to clipboard
+nnoremap ,cf :let @+=expand("%")<CR>
 
-"" AG searching
-let g:ackprg = 'ag --vimgrep'
+" Copy absolute path to clipboard
+nnoremap ,cF :let @+=expand("%:p")<CR>
+
+" Copy file name path to clipboard
+nnoremap ,ct :let @+=expand("%:t")<CR>
+
+
+"""
+""" Filetype stuff
+"""
+
+" Enable filetype recognition
+filetype on
+
+" Enable filetype recognition in plugins
+filetype plugin on
+
+" Enable indentation based on filetype
+filetype indent on
+
+" Set filetype to slim when *.skim file is loaded
+autocmd BufNewFile,BufRead *.skim set filetype=slim
 
 
 ""
 "" Status Line
 ""
 
-set laststatus=2      " Always include status line
+" Always include status line
+set laststatus=2
+
+" Status line config
 set statusline=%F\ [%n]\%{fugitive#statusline()}\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]\ [%p%%]
 
 
@@ -86,17 +155,17 @@ set statusline=%F\ [%n]\%{fugitive#statusline()}\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]
 ""
 
 " Moving the cursor...
-noremap <silent> ,h :wincmd h<cr>
-noremap <silent> ,j :wincmd j<cr>
-noremap <silent> ,k :wincmd k<cr>
-noremap <silent> ,l :wincmd l<cr>
+noremap <silent> ,h :wincmd h<CR>
+noremap <silent> ,j :wincmd j<CR>
+noremap <silent> ,k :wincmd k<CR>
+noremap <silent> ,l :wincmd l<CR>
 
 " Closing the window...
-noremap <silent> ,cc :close<cr>
-noremap <silent> ,cj :wincmd j<cr>:close<cr>
-noremap <silent> ,ck :wincmd k<cr>:close<cr>
-noremap <silent> ,ch :wincmd h<cr>:close<cr>
-noremap <silent> ,cl :wincmd l<cr>:close<cr>
+noremap <silent> ,cc :close<CR>
+noremap <silent> ,cj :wincmd j<CR>:close<CR>
+noremap <silent> ,ck :wincmd k<CR>:close<CR>
+noremap <silent> ,ch :wincmd h<CR>:close<CR>
+noremap <silent> ,cl :wincmd l<CR>:close<CR>
 
 " Moving the window...
 noremap <silent> ,ml <C-W>L
@@ -104,7 +173,10 @@ noremap <silent> ,mk <C-W>K
 noremap <silent> ,mh <C-W>H
 noremap <silent> ,mj <C-W>J
 
-" Maximizing and unmaximizing the window
+" Equal windows...
+noremap <silent> ,= :wincmd =<CR>
+
+" Maximizing and unmaximize the window
 nnoremap ,o :call MaximizeToggle()<CR>
 function! MaximizeToggle()
   if exists("s:maximize_session")
@@ -122,42 +194,30 @@ function! MaximizeToggle()
   endif
 endfunction
 
-" Equal windows...
-noremap <silent> ,= :wincmd =<cr>
-
-" Vertically split buffer...
-command! -nargs=1 Vsb call VsbFunction(<f-args>)
-
-function! VsbFunction (arg1)
-  execute 'vert sb' a:arg1
-endfunction
-
 
 ""
-"" Whitespace
+"" Trailing Whitespace
 ""
 
-set nowrap                                                        " don't wrap lines
-set tabstop=2                                                     " a tab is two spaces
-set shiftwidth=2                                                  " an autoindent (with <<) is two spaces
-set expandtab                                                     " use spaces, not tabs
-set backspace=indent,eol,start                                    " backspace through everything in insert mode
-
-" highlight whitespace
+" Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
-function! s:FixWhitespace(line1,line2)
+" Match all trailing whitespace when opening a file
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+
+" Match trailing whitespace except when typing at end of line
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Match all trailing whitespace after leaving insert mode
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Fix trailing whitespace
+nnoremap <silent> ,fw :call FixTrailingWhitespace()<CR>
+function! FixTrailingWhitespace()
   let l:save_cursor = getpos(".")
-  silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
+  silent! execute ':%s/\s\+$//'
   call setpos('.', l:save_cursor)
 endfunction
-
-command! -range=% Fixwhite call <SID>FixWhitespace(<line1>,<line2>)     " Run :Fixwhite to remove end of line white space
 
 
 ""
@@ -183,23 +243,29 @@ command! -range=% Fixwhite call <SID>FixWhitespace(<line1>,<line2>)     " Run :F
 
 
 ""
-"" Surrounding Text With Quotes
+"" Surround Quotes
 ""
 
-nnoremap <silent> qw :call Quote('"')<CR>
-nnoremap <silent> qs :call Quote("'")<CR>
-nnoremap <silent> wq :call UnQuote()<CR>
-function! Quote(quote)
-  normal mz
-  exe 's/\(\k*\%#\k*\)/' . a:quote . '\1' . a:quote . '/'
-  normal `zl
-endfunction
-
-function! UnQuote()
-  normal mz
-  exe 's/["' . "'" . ']\(\k*\%#\k*\)[' . "'" . '"]/\1/'
-  normal `z
-endfunction"'")'"')"
+" Surround word with double quotes
+" nnoremap <silent> qw :call Quote('"')<CR>
+"
+" " Surround word with single quotes
+" nnoremap <silent> qs :call Quote("'")<CR>
+"
+" " Unquote word
+" nnoremap <silent> wq :call UnQuote()<CR>
+"
+" function! Quote(quote)
+"   normal mz
+"   execute 's/\(\k*\%#\k*\)/' . a:quote . '\1' . a:quote . '/'
+"   normal `zl
+" endfunction
+"
+" function! UnQuote()
+"   normal mz
+"   execute 's/["' . "'" . ']\(\k*\%#\k*\)[' . "'" . '"]/\1/'
+"   normal `z
+" endfunction"'")'"')"
 
 
 ""
@@ -216,19 +282,11 @@ autocmd InsertLeave * :setlocal hlsearch
 nnoremap n nzz
 
 
-""
-"" Backup and swap files
-""
-
-set backupdir^=~/.vim/_backup//    " where to put backup files.
-set directory^=~/.vim/_temp//      " where to put swap files.
-
-
 "
 " NERDtree
 "
 
-"map <Leader>n :NERDTreeToggle<CR>      " NERDtree keymapping
+"map ,n :NERDTreeToggle<CR>
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "let NERDTreeHijackNetrw=1
 
@@ -271,7 +329,19 @@ let g:ctrlp_prompt_mappings = {
   \ 'CreateNewFile()':      ['<c-y>']
 \ }
 
-"""
-""" Vim Rspec
-"""
 
+""
+"" Pathogen Config
+""
+execute pathogen#infect()
+
+
+""
+"" Play with this file
+""
+
+" Edit .vimrc
+nmap <silent>,ev :e $MYVIMRC<CR>
+
+" Source .vimrc
+nmap <silent>,sv :so $MYVIMRC<CR>
