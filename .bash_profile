@@ -50,7 +50,7 @@ source ~/.git-completion.sh
 
 # PROMPT
 print_before_the_prompt () {
-    printf "\n$txtblu%s $txtwht%s$txtrst" "${PWD##*/}" "$(__git_ps1 '(%s)')"
+    printf "\n$txtwht%s $txtwht%s$txtrst" "${PWD##*/}" "$(__git_ps1 '(%s)')"
 }
 
 # PROMPT_COMMAND=print_before_the_prompt

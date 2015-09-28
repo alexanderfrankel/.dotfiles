@@ -98,11 +98,11 @@ highlight MatchParen ctermbg=darkgrey
 " Cursor line highlight color
 "highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
 
-" Active status line text color
-highlight StatusLine ctermbg=lightblue
+" Active status line color
+highlight StatusLine ctermfg=lightgrey ctermbg=black
 
-" Inactive status line text color
-highlight StatusLineNC ctermbg=lightred
+" Inactive status line color
+highlight StatusLineNC ctermfg=darkgrey ctermbg=white
 
 
 ""
@@ -147,7 +147,7 @@ autocmd BufNewFile,BufRead *.skim set filetype=slim
 set laststatus=2
 
 " Status line config
-set statusline=%F\ [%n]\%{fugitive#statusline()}\ %m\ %r\%=%-8.(%l,%c%)\ [%l/%L]\ [%p%%]
+set statusline=\ %t\ %m\ %r\ %=\ [%l/%L]\ [%p%%]
 
 
 ""
