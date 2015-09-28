@@ -26,7 +26,9 @@ $: end of line
 w,W,e,E: forward word movement
 b,B,ge,gE: backward word movement
 
-f,F,t,T: move to the character (; to repeat)
+f,F,t,T: move to the character
+;: go to next occurance
+,: got prev occurance
 
 CTRL + f: scroll full page up
 CTRL + b: scroll full page down
@@ -89,16 +91,24 @@ g#: search current word backward by regex
 n: next instance of match
 N: previous instance of match
 
-:%s/<pattern>/<sub>/g: substitute pattern matches with sub
-:%s/<pattern>/<sub>/ge: substitute pattern matches with sub (no errors if pattern not found)
-:%s/<pattern>/<sub>/gc: substitute pattern matches with sub (confirm before making change)
+:s/<pattern>/<sub>/g: substitute pattern matches in line with sub
+:s/<pattern>/<sub>/ge: substitute pattern matches with in line sub (no errors if pattern not found)
+:s/<pattern>/<sub>/gc: substitute pattern matches with in line sub (confirm before making change)
+
+:%s/<pattern>/<sub>/g: substitute pattern matches in file with sub
+:%s/<pattern>/<sub>/ge: substitute pattern matches with in file sub (no errors if pattern not found)
+:%s/<pattern>/<sub>/gc: substitute pattern matches with in file sub (confirm before making change)
+
+&: repeat last substitution command
 
 
 #########################################
 Edit Commands
 #########################################
 
-.: repeat last command
+.: repeat last change
+
+u: undo last change
 
 i: insert mode at current cursor position
 I: insert mode at beginning of line
@@ -136,6 +146,10 @@ CTRL + n: open autocomplete dropdown
 
 :[range]/g/<pattern>/cmd: execute command on each line matching pattern
 :[range]/g!/<pattern>/cmd: execute command on each line NOT matching pattern
+
+==: format indent selected lines
+<<: indent left
+>>: indent right
 
 
 #########################################
@@ -177,6 +191,31 @@ CTRL + ^: switch to alternate buffer
 :bufdo + command: repeat command over every buffer
 :tabdo + command: repeat command over every tab
 :windo + command: repeat command over every window
+
+
+#########################################
+Windows (:help windows)
+#########################################
+
+CTRL + w + o: make current window only visible window
+
+sp: split window horiz
+CTRL + w + s: split window horiz
+
+:vsp: split window vert
+CTRL + w + v: split window vert
+
+CTRL + w + h,j,k,l: change current window
+
+CTRL + w: cycle current window
+
+CTRL + w + p: change to previous window
+
+CTRL + w + H,J,K,L: move window position
+
+CTRL + w + c: close current window
+
+CTRL + w + x: switches window position
 
 
 #########################################
