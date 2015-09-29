@@ -151,10 +151,53 @@ CTRL + n: open autocomplete dropdown
 <<: indent left
 >>: indent right
 
+CTRL + a: increment integer by 1 (can be used anywhere on line)
+CTRL + x: decrement integer by 1 (can be used anywhere on line)
+
 
 #########################################
 Text Objects
 #########################################
+
+<number><command><text object or motion>: structure of editing a command
+
+daw: delete word (including surrounding whitespace)
+diw: delete inner word
+
+das: delete sentence (including trailing whitespace)
+dis: delete inner sentence
+
+dap: delete paragraph (including trailing whitespace)
+dip: delete inner paragraph
+
+"""""""""""""""""""""""""""""""""""""""""
+Strings (command default to first occurance on line)
+"""""""""""""""""""""""""""""""""""""""""
+
+da": delete double quoted string
+di": delete inner double quoted string
+
+da': delete single quoted string
+di': delete inner single quoted string
+
+da`: delete back quoted string "aksdf"
+di`: delete single back quoted string
+
+"""""""""""""""""""""""""""""""""""""""""
+Parenthesis/Brackets/Braces/Tags
+"""""""""""""""""""""""""""""""""""""""""
+
+da): delete parenthesized block
+di): delete inner parenthesized block
+
+da]: delete bracketed block
+di]: delete inner bracketed block
+
+da}: delete brace block
+di}: delete inner brace block
+
+dat: delete tag block
+dit: delete inner tag block
 
 
 #########################################
