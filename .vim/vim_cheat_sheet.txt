@@ -10,8 +10,9 @@ Basic Commands
 :e + filename: open file in current buffer
 :w: write file in current buffer
 :wall: write all files in all buffers
-q: quit
-q!: force quit (without saving)
+:q: quit
+:q!: force quit (without saving)
+:!: bash command
 
 
 #########################################
@@ -154,6 +155,16 @@ CTRL + n: open autocomplete dropdown
 CTRL + a: increment integer by 1 (can be used anywhere on line)
 CTRL + x: decrement integer by 1 (can be used anywhere on line)
 
+gu: make lowercase
+gU: make uppercase
+g~: swap case
+
+guu: make line lowercase
+gUU: make line uppercase
+g~: swap line case
+
+!: filter lines through external program
+
 
 #########################################
 Text Objects
@@ -198,6 +209,13 @@ di}: delete inner brace block
 
 dat: delete tag block
 dit: delete inner tag block
+
+
+#########################################
+Folds
+#########################################
+
+zf: define fold
 
 
 #########################################
