@@ -165,6 +165,7 @@ g~: swap line case
 
 !: filter lines through external program
 
+CTRL + 0 (while in insert mode): execute one command in normal mode and switch back to insert mode
 
 #########################################
 Text Objects
