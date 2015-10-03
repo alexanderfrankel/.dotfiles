@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/alexanderfrankel/workspace/viewthespace/app/assets/javascripts'
-let g:netrw_dirhist_2='/Users/alexanderfrankel/workspace/viewthespace/app/assets'
-let g:netrw_dirhist_3='/Users/alexanderfrankel/workspace/viewthespace/app'
-let g:netrw_dirhist_4='/Users/alexanderfrankel/workspace/viewthespace/app/controllers'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/alexanderfrankel/workspace/viewthespace/app'
+let g:netrw_dirhist_2='/Users/alexanderfrankel/workspace/viewthespace/app/workers'
+let g:netrw_dirhist_3='/Users/alexanderfrankel/workspace/viewthespace/app/workers/data_migrations'
+let g:netrw_dirhist_4='/Users/alexanderfrankel/workspace/viewthespace/spec/workers/data_migrations'
+let g:netrw_dirhist_5='/Users/alexanderfrankel/workspace/viewthespace/db/migrate'

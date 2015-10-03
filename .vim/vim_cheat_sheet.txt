@@ -165,7 +165,6 @@ g~: swap line case
 
 !: filter lines through external program
 
-CTRL + 0 (while in insert mode): execute one command in normal mode and switch back to insert mode
 
 #########################################
 Text Objects
@@ -293,6 +292,19 @@ q + register: start recording macro and store in register
 q: stop recording
 
 number + @ + register: run macro number of times
+
+
+#########################################
+Insert Mode
+#########################################
+
+ALL COMMANDS EXECUTED BELOW ARE FROM INSERT MODE!
+
+CTRL + h: delete back one character (backspace)
+CTRL + w: delete back one word
+CTRL + u: delete back to start of insert mode edits
+
+CTRL + o: execute one command in normal mode
 
 
 #########################################
