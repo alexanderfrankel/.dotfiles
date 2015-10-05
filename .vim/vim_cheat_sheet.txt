@@ -129,6 +129,8 @@ C: change to end of line
 
 R: replace
 r: replace single character
+gR: virtual replace
+gr: virtual replace single character
 
 s: substitute
 S: substitute line from beginning of text
@@ -305,6 +307,32 @@ CTRL + w: delete back one word
 CTRL + u: delete back to start of insert mode edits
 
 CTRL + o: execute one command in normal mode
+
+CTRL + r + register: paste from register
+CTRL + r + CTRL + p + register: past from register fixing indentation
+CTRL + r + =: access expression register
+
+CTRL + v + {numeric code}: insert character by decimal code
+CTRL + v + u + {hex code}: insert character by hexadecimal code
+CTRL + v + {nondigit}: insert nondigit literally
+CTRL + k + {char1} + {char2}: insert character represented by {char1}{char2} digraph (:digraph to show table)
+
+
+#########################################
+Help
+#########################################
+
+:h: open help
+
+CTRL + ]: move into hyperlink
+CTRL + T: move back in hyperlink history
+
+:h + <topic-name>: jump straight to topic
+
+:helpgrep: search through help documentation
+:cn: go to next
+:cp: go to previous
+:cwin: open results in quickfix window
 
 
 #########################################

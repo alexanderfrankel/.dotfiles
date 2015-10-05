@@ -334,6 +334,7 @@ let g:ctrlp_prompt_mappings = {
 "" Pathogen Config
 ""
 execute pathogen#infect()
+Helptags
 
 
 ""
