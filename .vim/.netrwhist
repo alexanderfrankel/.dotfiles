@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/alexanderfrankel/workspace/viewthespace/spec/requests'
-let g:netrw_dirhist_2='/Users/alexanderfrankel/workspace/viewthespace/app/assets/javascripts/horse/building-profile/documents-uploader'
-let g:netrw_dirhist_3='/Users/alexanderfrankel/workspace/viewthespace/app/workers/data_migrations'
-let g:netrw_dirhist_4='/Users/alexanderfrankel/workspace/viewthespace/app/workers'
-let g:netrw_dirhist_5='/Users/alexanderfrankel/workspace/viewthespace/app/workers/data_migrations'
-let g:netrw_dirhist_6='/Users/alexanderfrankel/workspace/viewthespace/config/initializers'
