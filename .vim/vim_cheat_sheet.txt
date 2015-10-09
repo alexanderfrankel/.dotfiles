@@ -348,3 +348,15 @@ Vim Fugitive
 :Gcommit: open commit window in split window
 :Gblame: open blame window in split window
 
+
+#########################################
+.vimrc (:help vimrc)
+#########################################
+
+source {file}: source file into vim
+
+iab: set abbreviation
+
+#########################################
+Runtime Path (:help runtimepath)
+#########################################
