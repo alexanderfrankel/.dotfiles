@@ -147,7 +147,7 @@ autocmd BufNewFile,BufRead *.skim set filetype=slim
 set laststatus=2
 
 " Status line config
-set statusline=\ %t\ %m\ %r\ %=\ [%l/%L]\ [%p%%]
+set statusline=\ %t\ %m\ %r\ %=\ %{fugitive#statusline()}\ [%l/%L]\ [%p%%]
 
 
 ""
