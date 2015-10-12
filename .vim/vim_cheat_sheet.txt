@@ -229,6 +229,9 @@ V: visual mode by line
 CTRL + v: visual block mode
 gv: re-select area just selected
 
+o: toggle to opposite end of visual selection
+U: uppercase visual selection
+
 
 #########################################
 Switching Files (:help ls) (:help args)
