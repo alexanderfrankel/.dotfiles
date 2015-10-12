@@ -109,10 +109,10 @@ highlight StatusLineNC ctermfg=darkgrey ctermbg=white
 "" System Clipboard
 ""
 
-" Copy visual selectio to system clipboard
-vmap <C-c> :w !pbcopy<CR><CR>
+" Add unamed register to system clipboard
+set clipboard=unnamed
 
-" Copy relative path to clipboard
+" Copy relative pathto clipboard
 nnoremap ,cf :let @+=expand("%")<CR>
 
 " Copy absolute path to clipboard
