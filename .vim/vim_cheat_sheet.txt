@@ -100,6 +100,8 @@ N: previous instance of match
 :%s/<pattern>/<sub>/ge: substitute pattern matches with in file sub (no errors if pattern not found)
 :%s/<pattern>/<sub>/gc: substitute pattern matches with in file sub (confirm before making change)
 
+**note: if pattern has been found using '/', you do not have to enter a patter in substitute command
+
 &: repeat last substitution command
 
 
@@ -232,6 +234,8 @@ gv: re-select area just selected
 o: toggle to opposite end of visual selection
 U: uppercase visual selection
 
+$: extend visual block selection to end of line
+
 
 #########################################
 Switching Files (:help ls) (:help args)
@@ -319,6 +323,51 @@ CTRL + v + {numeric code}: insert character by decimal code
 CTRL + v + u + {hex code}: insert character by hexadecimal code
 CTRL + v + {nondigit}: insert nondigit literally
 CTRL + k + {char1} + {char2}: insert character represented by {char1}{char2} digraph (:digraph to show table)
+
+
+#########################################
+Command Line Mode (:help ex-cmd-index)
+#########################################
+
+ALL COMMANDS EXECUTED BELOW ARE FROM COMMAND LINE MODE
+
+CTRL + p: scroll backwards through command line history
+CTRL + n: scroll forwards through command line history
+
+q: open the command line window with history of ex commands (executed from NORMAL MODE)
+q/: open command line window with history of searches (executed from NORMAL MODE)
+CTRL + f: switch to command line window from command line mode
+
+@: : repeat last ex command
+@@: subsequently repeat ex command
+CTRL + o: go back to previous recrod in jump list
+
+CTRL + d: reveal list of possible completions in command line
+
+CTRL + r CTRL + d: inserts word under cursor in command prompt
+
+CTRL + r + register: insert contents of register
+
+[range][command] :print, :delete, :join, :substitute, :normal
+.: current line
+$: end of file
+%: all the lines in the current file
+'m: line containing mark 'm'
+'<: first line of visual selection
+'>: last line of visual selection
+{address}+n: offset address
+
+[range]t {address}: copy line to (does not copy to register)
+[range]m {address}: move lines to
+[range]normal [normal mode command]: execute normal mode command on lines
+
+!: execute program in the shell
+shell: execute several commands in the shell
+%: current filename (:help filename-modifiers)
+
+read !{cmd}: direct standard output from shell into vim buffer
+[range]write !{cmd}: use current buffer as standard input for command
+[range]!{filter}: filter specified range though external program
 
 
 #########################################
