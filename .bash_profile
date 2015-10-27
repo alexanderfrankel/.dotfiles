@@ -38,6 +38,9 @@ bind "set completion-ignore-case on"
 # tab once if ambiguous
 bind "set show-all-if-ambiguous on"
 
+# Allow <C-s> to pass through to shell and programs
+stty -ixon -ixoff
+
 # COLOR
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red

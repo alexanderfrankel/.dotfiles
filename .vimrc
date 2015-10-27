@@ -2,9 +2,6 @@
 "" Base Config
 ""
 
-" Set ',' to leader key
-let mapleader = ","
-
 " Use vim, no vi defaults
 set nocompatible      " Use vim, no vi defaults
 
@@ -56,6 +53,7 @@ let loaded_matchparen = 1
 " Highlight the curent line
 "set cursorline
 
+
 """
 """ Backup and Swap Files
 """
@@ -74,6 +72,23 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 
 
 ""
+"" General Key Mappings
+""
+
+" Set ',' to leader key
+let mapleader = ","
+
+" Map esc esc to save current buffer
+map <Esc><Esc> :w<CR>
+
+" Scroll command line history previous
+cnoremap <C-p> <Up>
+
+" Scroll command line history next
+cnoremap <C-n> <Down>
+
+
+""
 "" Colors
 ""
 
@@ -86,11 +101,12 @@ set background=dark
 " Set molokai colorscheme
 "colorscheme molokai
 
+let g:solarized_termtrans=1
+" Set solarized colorschem to 256 color
+let g:solarized_termcolors=256
+
 " Set solarized colorscheme
 colorscheme solarized
-
-" Set solarized colorschem to 256 color
-" let g:solarized_termcolors=256
 
 " Match parens highlight color
 highlight MatchParen ctermbg=darkgrey
@@ -109,10 +125,10 @@ highlight StatusLineNC ctermfg=darkgrey ctermbg=white
 "" System Clipboard
 ""
 
-" Copy visual selectio to system clipboard
-vmap <C-c> :w !pbcopy<CR><CR>
+" Add unamed register to system clipboard
+set clipboard=unnamed
 
-" Copy relative path to clipboard
+" Copy relative pathto clipboard
 nnoremap ,cf :let @+=expand("%")<CR>
 
 " Copy absolute path to clipboard
