@@ -305,16 +305,6 @@ autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 nnoremap n nzz
 
-
-"
-" NERDtree
-"
-
-"map ,n :NERDTreeToggle<CR>
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"let NERDTreeHijackNetrw=1
-
-
 ""
 "" Netrw
 ""
@@ -333,6 +323,15 @@ let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_post_private = 1
 
+
+"""
+""" AG Silver Searcher
+"""
+
+let g:ag_prg="ag --context --case-sensitive --nocolor --nogroup --vimgrep"
+let g:ag_working_path_mode="r"        " Search in project root by default
+
+
 """
 """ Ctrl P
 """
@@ -341,7 +340,9 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
+"let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$"'
+"let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0
 let g:ctrlp_open_new_file = 'r'
@@ -366,7 +367,7 @@ Helptags
 ""
 
 " Edit .vimrc
-nmap <silent>,ev :e $MYVIMRC<CR>
+nnoremap <silent>,ev :e $MYVIMRC<CR>
 
 " Source .vimrc
-nmap <silent>,sv :so $MYVIMRC<CR>
+nnoremap <silent>,sv :so $MYVIMRC<CR>
