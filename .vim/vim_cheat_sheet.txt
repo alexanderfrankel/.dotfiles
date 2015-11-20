@@ -169,6 +169,22 @@ g~: swap line case
 
 !: filter lines through external program
 
+""""""""""""""""""""""""""""""
+Tabbing
+""""""""""""""""""""""""""""""
+
+Insert mode:
+C-d - shift left
+C-t - shift right
+
+Normal mode:
+<< - shift current line left
+>> - shift current line right
+
+Visual mode:
+< - shift selection left
+> - shift selection right
+
 
 #########################################
 Text Objects
@@ -344,7 +360,7 @@ CTRL + o: go back to previous recrod in jump list
 
 CTRL + d: reveal list of possible completions in command line
 
-CTRL + r CTRL + d: inserts word under cursor in command prompt
+CTRL + r CTRL + w: inserts word under cursor in command prompt
 
 CTRL + r + register: insert contents of register
 

@@ -19,3 +19,5 @@
   gb = branch
   gr = remote
   gd = diff
+[url "ssh://git@heroku.com/"]
+	insteadOf = https://git.heroku.com/

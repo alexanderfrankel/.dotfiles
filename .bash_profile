@@ -25,7 +25,7 @@ export VTS_S3_API_KEY='549532733968861'
 export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
 
 export CAPYBARA_WAIT_TIME=5
-export DISABLE_STRICT=true
+# export DISABLE_STRICT=true
 
 source ~/.nvm/nvm.sh
 
@@ -100,5 +100,6 @@ alias zc="zeus console"
 alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
 alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[0-9].*[0-9]` './create_temp_creds.sh'"
+alias auditdb="DATABASE_URL=`produrl` rails c"
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
