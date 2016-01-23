@@ -1,5 +1,5 @@
 # Add ~/.rbenv/bin to $PATH for access to the rbenv command-line utility
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Add ~/bin to $PATH for access to personal scripts
 export PATH="$HOME/bin:$PATH"
@@ -27,9 +27,11 @@ export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
 export CAPYBARA_WAIT_TIME=5
 # export DISABLE_STRICT=true
 
+export COVERBAND=true
+
 source ~/.nvm/nvm.sh
 
-# Add rbenv init to shell to enable shims and autocompletion
+# set up rbenv shims
 eval "$(rbenv init -)"
 
 # case insensitive auto-completion
@@ -101,5 +103,7 @@ alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
 alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[0-9].*[0-9]` './create_temp_creds.sh'"
 alias auditdb="DATABASE_URL=`produrl` rails c"
+alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
+alias git="hub"
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

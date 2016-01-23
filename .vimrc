@@ -59,13 +59,16 @@ let loaded_matchparen = 1
 """
 
 " Do not create backup files
-"set nobackup
+set nobackup
+
+" Do not create backup files while editing
+set nowritebackup
 
 " Set backup file directory
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 
 " Do not create swap files
-"set noswapfile
+set noswapfile
 
 "Set swap file directory
 set directory^=~/.vim/_temp//      " where to put swap files.
@@ -267,32 +270,6 @@ iab db debugger
 
 
 ""
-"" Surround Quotes
-""
-
-" Surround word with double quotes
-" nnoremap <silent> qw :call Quote('"')<CR>
-"
-" " Surround word with single quotes
-" nnoremap <silent> qs :call Quote("'")<CR>
-"
-" " Unquote word
-" nnoremap <silent> wq :call UnQuote()<CR>
-"
-" function! Quote(quote)
-"   normal mz
-"   execute 's/\(\k*\%#\k*\)/' . a:quote . '\1' . a:quote . '/'
-"   normal `zl
-" endfunction
-"
-" function! UnQuote()
-"   normal mz
-"   execute 's/["' . "'" . ']\(\k*\%#\k*\)[' . "'" . '"]/\1/'
-"   normal `z
-" endfunction"'")'"')"
-
-
-""
 "" Searching
 ""
 
@@ -309,10 +286,10 @@ nnoremap n nzz
 "" Netrw
 ""
 
-let g:netrw_list_hide= '.*\.swp$,.*\.swo$,\~$,\.orig$'   " Hide filetypes in explorer
-let g:netrw_alto = 1                            " Open hsplit below current using 'o'
-let g:netrw_altv = 1                            " Open vsplit right current using 'v'
-let g:netrw_keepdir = 0                         " Track browsing dir
+let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$'   " Hide filetypes in explorer
+let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
+let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
+let g:netrw_keepdir = 0                                                              " Track browsing dir
 
 ""
 "" Vim-Gist
@@ -341,7 +318,7 @@ let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
 "let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile"'
 "let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0
@@ -358,6 +335,7 @@ let g:ctrlp_prompt_mappings = {
 ""
 "" Pathogen Config
 ""
+
 execute pathogen#infect()
 Helptags
 
