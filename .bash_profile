@@ -24,6 +24,11 @@ export VTS_S3_CLOUD_NAME='vts-private-test-cld'
 export VTS_S3_API_KEY='549532733968861'
 export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
 
+### CAP IQ ENV Vars
+export CAPITAL_IQ_HOST='https://cap-iq-api.vts.com'
+export CAPITAL_IQ_KEY='qKLn=AM09/4rHN?a6Z]9"(QXG$0@G2'
+export CAPITAL_IQ_SECRET='svO^hcaJ8E!Pf4ISq4i47T9j569pv{'
+
 export CAPYBARA_WAIT_TIME=5
 # export DISABLE_STRICT=true
 
@@ -101,8 +106,8 @@ alias zs="zeus server"
 alias zc="zeus console"
 alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
-alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[0-9].*[0-9]` './create_temp_creds.sh'"
-alias auditdb="DATABASE_URL=`produrl` rails c"
+alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[2-9].*[0-9]` './create_temp_creds.sh'"
+# alias auditdb="(echo '[Property, ActivityLog].each{ |model| model.class_eval{ set_primary_key :id   }  }' && cat) | DATABASE_URL=`produrl` rails c"
 alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
 alias git="hub"
 
