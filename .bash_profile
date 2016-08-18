@@ -32,7 +32,7 @@ export CAPITAL_IQ_SECRET='svO^hcaJ8E!Pf4ISq4i47T9j569pv{'
 export CAPYBARA_WAIT_TIME=5
 # export DISABLE_STRICT=true
 
-export COVERBAND=true
+# export COVERBAND=true
 
 source ~/.nvm/nvm.sh
 
@@ -75,6 +75,12 @@ print_before_the_prompt () {
 
 PS1='\n\[\e[0;36m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
+# CONNECT TO REMOTE DB
+connect_to_remote_db() {
+  DATABASE_URL=`heroku config:get DATABASE_URL -a $2` rails $1
+}
+
+alias remote_rails=connect_to_remote_db
 # ALIAS
 alias be="bundle exec "
 alias doit="rake db:drop; rake db:create && rake db:migrate && rake db:seed"
@@ -106,9 +112,23 @@ alias zs="zeus server"
 alias zc="zeus console"
 alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
-alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[2-9].*[0-9]` './create_temp_creds.sh'"
 # alias auditdb="(echo '[Property, ActivityLog].each{ |model| model.class_eval{ set_primary_key :id   }  }' && cat) | DATABASE_URL=`produrl` rails c"
 alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
 alias git="hub"
+alias remote_rails=connect_to_remote_db
+alias postgres-server="postgres -D /usr/local/var/postgres"
+
+function inpreprod {
+  git fetch > /dev/null 2>&1
+  if git merge-base --is-ancestor $1 `heroku releases -a vts-preprod | sed -n 2p | cut -f4 -d" "` ; then
+    echo "YES"
+  else
+    echo "NO"
+  fi
+}
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+function produrl {
+  ssh -i ~/.ssh/alexanderfrankel_audit_db_dsa auditdb.vts.com ./create_temp_creds.sh
+}

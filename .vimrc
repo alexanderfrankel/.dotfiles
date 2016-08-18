@@ -11,7 +11,7 @@ set nocompatible      " Use vim, no vi defaults
 set number
 
 " Show relative line numbers
-set relativenumber
+" set relativenumber
 
 " Show line and column number
 set ruler
@@ -60,6 +60,9 @@ let loaded_matchparen = 1
 
 " Highlight the curent line
 "set cursorline
+
+" Set column marker at max line length
+set colorcolumn=120
 
 
 """
@@ -217,9 +220,6 @@ noremap <silent> ,= :wincmd =<CR>
 " Open quickfix list widow...
 noremap <silent> ,cw :cw <CR>
 
-" Open quickfix list widow...
-noremap <silent> ,cw :cw <CR>
-
 " Tabs
 noremap <silent> ,L :tabnext<CR>
 noremap <silent> ,H :tabprev<CR>
@@ -274,20 +274,6 @@ nnoremap <C-l> :nohlsearch<CR>
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 nnoremap n nzz
-
-""
-"" Populate args list with quickfix results"
-""
-
-command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(values(buffer_numbers))
-endfunction
 
 
 ""
