@@ -5,6 +5,7 @@
 	user = alexanderfrankel
 [core]
 	editor = vim
+	excludesfile = /Users/alexanderfrankel/.gitignore
 [alias]
   gs = status
   ga = add

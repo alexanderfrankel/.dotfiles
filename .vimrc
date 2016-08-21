@@ -1,3 +1,5 @@
+echo ">^.^<"
+
 ""
 "" Base Config
 ""
@@ -7,6 +9,9 @@ set nocompatible      " Use vim, no vi defaults
 
 " Show line numbers
 set number
+
+" Show relative line numbers
+" set relativenumber
 
 " Show line and column number
 set ruler
@@ -41,6 +46,9 @@ set tabstop=2
 " Set autoindent to 2 spaces
 set shiftwidth=2
 
+" Round indent to multiple of 'shiftwidth'
+set shiftround
+
 " Use spaces instead of tabs
 set expandtab
 
@@ -53,19 +61,25 @@ let loaded_matchparen = 1
 " Highlight the curent line
 "set cursorline
 
+" Set column marker at max line length
+set colorcolumn=120
+
 
 """
 """ Backup and Swap Files
 """
 
 " Do not create backup files
-"set nobackup
+set nobackup
+
+" Do not create backup files while editing
+set nowritebackup
 
 " Set backup file directory
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 
 " Do not create swap files
-"set noswapfile
+set noswapfile
 
 "Set swap file directory
 set directory^=~/.vim/_temp//      " where to put swap files.
@@ -87,6 +101,14 @@ cnoremap <C-p> <Up>
 " Scroll command line history next
 cnoremap <C-n> <Down>
 
+" Move line up
+nnoremap ,mM :m .-2<CR>
+vnoremap ,mM :m '<-2<CR>gv
+
+" Move line down
+nnoremap ,mm :m .+1<CR>
+vnoremap ,mm :m '>+1<CR>gv
+
 
 ""
 "" Colors
@@ -101,7 +123,9 @@ set background=dark
 " Set molokai colorscheme
 "colorscheme molokai
 
+" Set solarized colorscheme term
 let g:solarized_termtrans=1
+
 " Set solarized colorschem to 256 color
 let g:solarized_termcolors=256
 
@@ -120,21 +144,22 @@ highlight StatusLine ctermfg=lightgrey ctermbg=black
 " Inactive status line color
 highlight StatusLineNC ctermfg=darkgrey ctermbg=white
 
+highlight CursorLineNr ctermfg=252 ctermbg=240
 
 ""
 "" System Clipboard
 ""
 
 " Add unamed register to system clipboard
-set clipboard=unnamed
+" set clipboard=unnamed
 
-" Copy relative pathto clipboard
+" Copy relative path to system clipboard
 nnoremap ,cf :let @+=expand("%")<CR>
 
-" Copy absolute path to clipboard
+" Copy absolute path to system clipboard
 nnoremap ,cF :let @+=expand("%:p")<CR>
 
-" Copy file name path to clipboard
+" Copy file name path to system clipboard
 nnoremap ,ct :let @+=expand("%:t")<CR>
 
 
@@ -163,7 +188,7 @@ autocmd BufNewFile,BufRead *.skim set filetype=slim
 set laststatus=2
 
 " Status line config
-set statusline=\ %t\ %m\ %r\ %=\ %{fugitive#statusline()}\ [%l/%L]\ [%p%%]
+set statusline=\ %f\ %m\ %r\ %=\ %{fugitive#statusline()}\ [%v]\ [%l/%L]\ [%p%%]
 
 
 ""
@@ -192,23 +217,15 @@ noremap <silent> ,mj <C-W>J
 " Equal windows...
 noremap <silent> ,= :wincmd =<CR>
 
-" Maximizing and unmaximize the window
-nnoremap ,o :call MaximizeToggle()<CR>
-function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
-endfunction
+" Open quickfix list widow...
+noremap <silent> ,cw :cw <CR>
+
+" Tabs
+noremap <silent> ,L :tabnext<CR>
+noremap <silent> ,H :tabprev<CR>
+noremap <silent> ,tn :tabnew<CR>
+noremap <silent> ,tc :tabclose<CR>
+noremap <silent> ,tw :wincmd T<CR>
 
 
 ""
@@ -240,56 +257,9 @@ endfunction
 "" Abbreviations
 ""
 
-iab bp binding.pry
-iab db debugger
-
-
-""
-"" Appending Closing Characters
-""
-
-" inoremap {      {}<Left>
-" inoremap {<CR>  {<CR>}<Esc>O
-" inoremap {{     {
-" inoremap {}     {}
-" inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-"
-" inoremap        (  ()<Left>
-" inoremap (<CR>  (<CR>)<Esc>O
-" inoremap ((     (
-" inoremap ()     ()
-" inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-"
-" inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-" inoremap ''     '
-" inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
-" inoremap ""     "
-
-
-""
-"" Surround Quotes
-""
-
-" Surround word with double quotes
-" nnoremap <silent> qw :call Quote('"')<CR>
-"
-" " Surround word with single quotes
-" nnoremap <silent> qs :call Quote("'")<CR>
-"
-" " Unquote word
-" nnoremap <silent> wq :call UnQuote()<CR>
-"
-" function! Quote(quote)
-"   normal mz
-"   execute 's/\(\k*\%#\k*\)/' . a:quote . '\1' . a:quote . '/'
-"   normal `zl
-" endfunction
-"
-" function! UnQuote()
-"   normal mz
-"   execute 's/["' . "'" . ']\(\k*\%#\k*\)[' . "'" . '"]/\1/'
-"   normal `z
-" endfunction"'")'"')"
+iab bp binding.pry<esc>
+iab db debugger<esc>
+iab wtf puts "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 
 ""
@@ -300,19 +270,20 @@ set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
-nnoremap <C-l> :nohlsearch<CR><C-l>
+nnoremap <C-l> :nohlsearch<CR>
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 nnoremap n nzz
+
 
 ""
 "" Netrw
 ""
 
-let g:netrw_list_hide= '.*\.swp$,.*\.swo$,\~$,\.orig$'   " Hide filetypes in explorer
-let g:netrw_alto = 1                            " Open hsplit below current using 'o'
-let g:netrw_altv = 1                            " Open vsplit right current using 'v'
-let g:netrw_keepdir = 0                         " Track browsing dir
+let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$'   " Hide filetypes in explorer
+let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
+let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
+let g:netrw_keepdir = 0                                                              " Track browsing dir
 
 ""
 "" Vim-Gist
@@ -328,8 +299,9 @@ let g:gist_post_private = 1
 """ AG Silver Searcher
 """
 
-let g:ag_prg="ag --context --case-sensitive --nocolor --nogroup --vimgrep"
-let g:ag_working_path_mode="r"        " Search in project root by default
+nnoremap ,a :Ag!
+let g:ag_prg="ag --case-sensitive --vimgrep"
+let g:ag_working_path_mode="r"
 
 
 """
@@ -340,8 +312,9 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_show_hidden = 1
 "let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|\.rake$"'
 "let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0
@@ -358,6 +331,7 @@ let g:ctrlp_prompt_mappings = {
 ""
 "" Pathogen Config
 ""
+
 execute pathogen#infect()
 Helptags
 
