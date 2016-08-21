@@ -72,6 +72,17 @@ m + register: mark current line
 ` + register: go to mark itself
 ' + ': go to previous location line
 ` + `: go to previous location itself
+' + ,: go to last change
+' + ^: go to last insertion
+
+
+#########################################
+Registers
+#########################################
+
+"": unanamed register (gets overwritten by delete)
+"0: yank register (does not get overwritten by delete)
+" + register + y + text object: yank text object into specified register
 
 
 #########################################
@@ -415,6 +426,11 @@ Vim Fugitive
 :Gmove: rename file in current buffer
 :Gcommit: open commit window in split window
 :Gblame: open blame window in split window
+
+
+#########################################
+Surround
+#########################################
 
 
 #########################################

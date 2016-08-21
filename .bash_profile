@@ -12,19 +12,19 @@ export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
 export EDITOR='vim'
 
 ### Pusher ENV Vars
-export PUSHER_APP_ID='42486'
-export PUSHER_KEY='272874af6c68c0789d5c'
-export PUSHER_SECRET='b8870c9cef7a3ee468ac'
+# export PUSHER_APP_ID='42486'
+# export PUSHER_KEY='272874af6c68c0789d5c'
+# export PUSHER_SECRET='b8870c9cef7a3ee468ac'
 
 ### Cloudinary ENV Vars
-export CLOUDINARY_API_KEY='819981746663864'
-export CLOUDINARY_CLOUD_NAME='view-the-space-test'
-export CLOUDINARY_SECRET='D34dDdIZBHH8Cg-ksz1J0_yZi7Q'
-export VTS_S3_CLOUD_NAME='vts-private-test-cld'
-export VTS_S3_API_KEY='549532733968861'
-export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
+# export CLOUDINARY_API_KEY='819981746663864'
+# export CLOUDINARY_CLOUD_NAME='view-the-space-test'
+# export CLOUDINARY_SECRET='D34dDdIZBHH8Cg-ksz1J0_yZi7Q'
+# export VTS_S3_CLOUD_NAME='vts-private-test-cld'
+# export VTS_S3_API_KEY='549532733968861'
+# export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
 
-export CAPYBARA_WAIT_TIME=5
+# export CAPYBARA_WAIT_TIME=5
 # export DISABLE_STRICT=true
 
 source ~/.nvm/nvm.sh
@@ -99,7 +99,5 @@ alias zs="zeus server"
 alias zc="zeus console"
 alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
-alias produrl="ssh -i ~/.ssh/`whoami`_audit_db_dsa `whoami`@`dig +short auditdb.vts.com | grep -E ^[0-9].*[0-9]` './create_temp_creds.sh'"
-alias auditdb="DATABASE_URL=`produrl` rails c"
 
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
