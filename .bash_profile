@@ -81,6 +81,7 @@ connect_to_remote_db() {
 }
 
 alias remote_rails=connect_to_remote_db
+
 # ALIAS
 alias be="bundle exec "
 alias doit="rake db:drop; rake db:create && rake db:migrate && rake db:seed"
