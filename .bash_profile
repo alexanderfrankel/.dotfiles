@@ -1,40 +1,13 @@
-# Add ~/.rbenv/bin to $PATH for access to the rbenv command-line utility
-# export PATH="$HOME/.rbenv/bin:$PATH"
-
 # Add ~/bin to $PATH for access to personal scripts
 export PATH="$HOME/bin:$PATH"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export PATH="$HOME/Applications/Firefox.app/Contents/MacOS:$PATH"
-
+# set vim as default editor
 export EDITOR='vim'
 
-### Pusher ENV Vars
-# export PUSHER_APP_ID='42486'
-# export PUSHER_KEY='272874af6c68c0789d5c'
-# export PUSHER_SECRET='b8870c9cef7a3ee468ac'
-
-### Cloudinary ENV Vars
-# export CLOUDINARY_API_KEY='819981746663864'
-# export CLOUDINARY_CLOUD_NAME='view-the-space-test'
-# export CLOUDINARY_SECRET='D34dDdIZBHH8Cg-ksz1J0_yZi7Q'
-# export VTS_S3_CLOUD_NAME='vts-private-test-cld'
-# export VTS_S3_API_KEY='549532733968861'
-# export VTS_S3_SECRET='rdqS7jCw8bsgwcBjfSD-70Zgggo'
-
-### CAP IQ ENV Vars
-# export CAPITAL_IQ_HOST='https://cap-iq-api.vts.com'
-# export CAPITAL_IQ_KEY='qKLn=AM09/4rHN?a6Z]9"(QXG$0@G2'
-# export CAPITAL_IQ_SECRET='svO^hcaJ8E!Pf4ISq4i47T9j569pv{'
-
-# export CAPYBARA_WAIT_TIME=5
-# export DISABLE_STRICT=true
-
-# export COVERBAND=true
-
-source ~/.nvm/nvm.sh
+# load nvm
+export NVM_DIR="/Users/alexanderfrankel/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load rbenv
 eval "$(rbenv init -)"
@@ -66,13 +39,6 @@ source ~/.git-prompt.sh
 # Load in git completion
 source ~/.git-completion.sh
 
-# PROMPT
-print_before_the_prompt () {
-    printf "\n$txtwht%s $txtwht%s$txtrst" "${PWD##*/}" "$(__git_ps1 '(%s)')"
-}
-
-# PROMPT_COMMAND=print_before_the_prompt
-
 PS1='\n\[\e[0;36m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
 # CONNECT TO REMOTE DB
@@ -80,16 +46,11 @@ connect_to_remote_db() {
   DATABASE_URL=`heroku config:get DATABASE_URL -a $2` rails $1
 }
 
-alias remote_rails=connect_to_remote_db
-
 # ALIAS
 alias be="bundle exec "
-alias doit="rake db:drop; rake db:create && rake db:migrate && rake db:seed"
 
-alias gi="git init "
 alias gs="git status "
 alias ga="git add "
-alias gaa="git add --all "
 alias grm="git rm "
 alias gcm="git commit -m "
 alias gcv="git commit -v "
@@ -113,9 +74,8 @@ alias zs="zeus server"
 alias zc="zeus console"
 alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
-# alias auditdb="(echo '[Property, ActivityLog].each{ |model| model.class_eval{ set_primary_key :id   }  }' && cat) | DATABASE_URL=`produrl` rails c"
 alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
-# alias git="hub"
+
 alias remote_rails=connect_to_remote_db
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
@@ -126,10 +86,4 @@ function inpreprod {
   else
     echo "NO"
   fi
-}
-
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-function produrl {
-  ssh -i ~/.ssh/alexanderfrankel_audit_db_dsa auditdb.vts.com ./create_temp_creds.sh
 }
