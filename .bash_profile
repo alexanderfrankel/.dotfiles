@@ -36,7 +36,7 @@ export EDITOR='vim'
 
 source ~/.nvm/nvm.sh
 
-# set up rbenv shims
+# load rbenv
 eval "$(rbenv init -)"
 
 # case insensitive auto-completion
@@ -115,7 +115,7 @@ alias zt="zeus test"
 alias ztf="zeus test --fail-fast"
 # alias auditdb="(echo '[Property, ActivityLog].each{ |model| model.class_eval{ set_primary_key :id   }  }' && cat) | DATABASE_URL=`produrl` rails c"
 alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
-alias git="hub"
+# alias git="hub"
 alias remote_rails=connect_to_remote_db
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
