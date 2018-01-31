@@ -296,12 +296,11 @@ let g:gist_post_private = 1
 
 
 """
-""" AG Silver Searcher
+""" Ack
 """
 
-nnoremap ,a :Ag!
-let g:ag_prg="ag --case-sensitive --vimgrep"
-let g:ag_working_path_mode="r"
+let g:ackprg = 'ag --vimgrep --smart-case'
+nnoremap ,a :Ack!
 
 
 """

@@ -77,6 +77,7 @@ alias ztf="zeus test --fail-fast"
 alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
 
 alias remote_rails=connect_to_remote_db
+alias postgres-server96="postgres -D /usr/local/var/postgresql\@9.6/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
 function inpreprod {
