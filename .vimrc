@@ -299,8 +299,9 @@ let g:gist_post_private = 1
 """ Ack
 """
 
-let g:ackprg = 'ag --vimgrep --smart-case'
-nnoremap ,a :Ack!
+nnoremap ,a :Ag!
+let g:ag_prg="ag --case-sensitive --vimgrep"
+let g:ag_working_path_mode="r"
 
 
 """
