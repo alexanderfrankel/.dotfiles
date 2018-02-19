@@ -4,11 +4,6 @@ export PATH="$HOME/bin:$PATH"
 # set vim as default editor
 export EDITOR='vim'
 
-# load nvm
-export NVM_DIR="/Users/alexanderfrankel/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # load rbenv
 eval "$(rbenv init -)"
 
