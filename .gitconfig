@@ -7,18 +7,16 @@
 	editor = vim
 	excludesfile = /Users/alexanderfrankel/.gitignore
 [alias]
-  gs = status
-  ga = add
-  gaa = add --all
-  grm = rm
-  gvm = commit -m
-  gcv = commit -v
-  gl = log
-  gc = checkout
-  gcb = checkout -b
-  gp = push
-  gb = branch
-  gr = remote
-  gd = diff
+  diffy = difftool --no-symlinks --dir-diff
 [url "ssh://git@heroku.com/"]
 	insteadOf = https://git.heroku.com/
+[diff]
+      tool = kitty
+          guitool = kitty.gui
+[difftool]
+      prompt = false
+          trustExitCode = true
+[difftool "kitty"]
+      cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+      cmd = kitty kitty +kitten diff $LOCAL $REMOTE
