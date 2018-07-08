@@ -7,6 +7,9 @@ export EDITOR='vim'
 # load rbenv
 eval "$(rbenv init -)"
 
+# load nodenv
+eval "$(nodenv init -)"
+
 # case insensitive auto-completion
 bind "set completion-ignore-case on"
 
@@ -42,28 +45,27 @@ connect_to_remote_db() {
 }
 
 # ALIAS
-alias be="bundle exec "
+alias be="bundle exec"
 
-alias gs="git status "
-alias ga="git add "
-alias grm="git rm "
-alias gcm="git commit -m "
-alias gcv="git commit -v "
-alias gl="git log "
-alias gc="git checkout "
-alias gcb="git checkout -b "
-alias gp="git push "
-alias gb="git branch "
-alias gr="git remote "
-alias gd="git diff "
+alias gs="git status"
+alias ga="git add"
+alias grm="git rm"
+alias gcm="git commit -m"
+alias gcv="git commit -v"
+alias gl="git log"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias gp="git push"
+alias gb="git branch"
+alias gr="git remote"
+alias gd="git diffy"
 
-alias rs="rails s "
-alias rc="rails c "
+alias rs="rails s"
+alias rc="rails c"
 
 alias rebp="source ~/.bash_profile"
 alias rebr="source ~/.bash_rc"
 alias tailtest="tail -f log/test.log"
-alias fix-karma="ulimit -S -n 2048"
 
 alias zs="zeus server"
 alias zc="zeus console"
@@ -75,13 +77,6 @@ alias remote-rails=connect_to_remote_db
 alias postgres-server96="postgres -D /usr/local/var/postgresql\@9.6/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
-alias restore-common-dev="url=$(heroku pg:backups public-url --app cmn-admin); curl $url | pg_restore -c -O -d common -U common"
+alias weather="curl wttr.in/nyc"
 
-function inpreprod {
-  git fetch > /dev/null 2>&1
-  if git merge-base --is-ancestor $1 `heroku releases -a vts-preprod | sed -n 2p | cut -f4 -d" "` ; then
-    echo "YES"
-  else
-    echo "NO"
-  fi
-}
+alias restore-common-dev="cat README.md | grep curl | bash"
