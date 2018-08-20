@@ -58,7 +58,7 @@ alias gcb="git checkout -b"
 alias gp="git push"
 alias gb="git branch"
 alias gr="git remote"
-alias gd="git diffy"
+alias gd="git diff"
 
 alias rs="rails s"
 alias rc="rails c"

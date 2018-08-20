@@ -120,9 +120,6 @@ syntax enable
 " Set dark background
 set background=dark
 
-" Set molokai colorscheme
-"colorscheme molokai
-
 " Set solarized colorscheme term
 let g:solarized_termtrans=1
 
@@ -136,7 +133,7 @@ colorscheme solarized
 highlight MatchParen ctermbg=darkgrey
 
 " Cursor line highlight color
-"highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
+highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
 
 " Active status line color
 highlight StatusLine ctermfg=lightgrey ctermbg=black
@@ -284,6 +281,7 @@ let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi
 let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
 let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                                                              " Track browsing dir
+
 
 ""
 "" Vim-Gist
