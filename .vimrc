@@ -333,6 +333,12 @@ let g:ctrlp_prompt_mappings = {
 execute pathogen#infect()
 Helptags
 
+""
+"" Enable Default Plugins
+""
+
+packadd! matchit
+
 
 ""
 "" Play with this file
