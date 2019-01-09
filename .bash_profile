@@ -4,6 +4,8 @@ export PATH="$HOME/bin:$PATH"
 # set vim as default editor
 export EDITOR='vim'
 
+# export http_proxy = "http://localhost:80"
+
 # load rbenv
 eval "$(rbenv init -)"
 

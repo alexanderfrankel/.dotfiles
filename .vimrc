@@ -224,6 +224,12 @@ noremap <silent> ,tn :tabnew<CR>
 noremap <silent> ,tc :tabclose<CR>
 noremap <silent> ,tw :wincmd T<CR>
 
+" Resizing panes
+noremap <silent> ,+ :wincmd +<CR>
+noremap <silent> ,- :wincmd -<CR>
+noremap <silent> ,< :wincmd <<CR>
+noremap <silent> ,> :wincmd ><CR>
+
 
 ""
 "" Trailing Whitespace
@@ -306,13 +312,12 @@ let g:ag_working_path_mode="r"
 """ Ctrl P
 """
 
-let g:ctrlp_regexp = 1
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_show_hidden = 1
 "let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$"'
 "let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0
@@ -324,6 +329,15 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtClear()':           ['<c-u>'],
   \ 'CreateNewFile()':      ['<c-y>']
 \ }
+
+
+"""
+""" Ctrl P
+"""
+
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>r :call RunLastSpec()<CR>
 
 
 ""
