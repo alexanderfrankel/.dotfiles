@@ -121,10 +121,10 @@ syntax enable
 set background=dark
 
 " Set solarized colorscheme term
-let g:solarized_termtrans=1
+" let g:solarized_termtrans=1
 
 " Set solarized colorschem to 256 color
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 
 " Set solarized colorscheme
 colorscheme solarized
@@ -287,6 +287,8 @@ let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi
 let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
 let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                                                              " Track browsing dir
+" let g:netrw_liststyle = 3                                                            " Tree list view
+let g:netrw_banner = 0                                                               " Remove banner
 
 
 ""
@@ -312,12 +314,13 @@ let g:ag_working_path_mode="r"
 """ Ctrl P
 """
 
+let g:ctrlp_regexp = 1
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_show_hidden = 1
 "let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$|\.ts$|\.tsx$"'
 "let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0
@@ -338,6 +341,13 @@ let g:ctrlp_prompt_mappings = {
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>r :call RunLastSpec()<CR>
+
+
+"""
+""" IndentLine
+"""
+
+" let g:indentLine_setColors = 0
 
 
 ""
