@@ -4,7 +4,7 @@
 [github]
 	user = alexanderfrankel
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/alexanderfrankel/.gitignore
 [alias]
   diffy = difftool --no-symlinks --dir-diff
