@@ -2,15 +2,19 @@
 export PATH="$HOME/bin:$PATH"
 
 # set vim as default editor
-export EDITOR='vim'
-
-# export http_proxy = "http://localhost:80"
+export EDITOR='nvim'
 
 # load rbenv
 eval "$(rbenv init -)"
 
 # load nodenv
 eval "$(nodenv init -)"
+
+# Load in the git branch prompt script.
+source ~/.git-prompt.sh
+
+# Load in git completion
+source ~/.git-completion.sh
 
 # case insensitive auto-completion
 bind "set completion-ignore-case on"
@@ -19,7 +23,7 @@ bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
 
 # Allow <C-s> to pass through to shell and programs
-stty -ixon -ixoff
+# stty -ixon -ixoff
 
 # COLOR
 txtblk='\e[0;30m' # Black - Regular
@@ -33,18 +37,7 @@ txtwht='\e[0;37m' # White
 
 txtrst='\e[0m'    # Text Reset`
 
-# Load in the git branch prompt script.
-source ~/.git-prompt.sh
-
-# Load in git completion
-source ~/.git-completion.sh
-
 PS1='\n\[\e[0;36m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
-
-# CONNECT TO REMOTE DB
-connect_to_remote_db() {
-  DATABASE_URL=`heroku config:get DATABASE_URL -a $2` rails $1
-}
 
 # ALIAS
 alias be="bundle exec"
@@ -65,20 +58,8 @@ alias gd="git diff"
 alias rs="rails s"
 alias rc="rails c"
 
-alias rebp="source ~/.bash_profile"
-alias rebr="source ~/.bash_rc"
-alias tailtest="tail -f log/test.log"
-
-alias zs="zeus server"
-alias zc="zeus console"
-alias zt="zeus test"
-alias ztf="zeus test --fail-fast"
-alias kzs="pid=$(pgrep -n zeus-darwin-amd64 server); kill -9 $pid"
-
-alias remote-rails=connect_to_remote_db
 alias postgres-server96="postgres -D /usr/local/var/postgresql\@9.6/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
-alias weather="curl wttr.in/nyc"
-
-alias restore-common-dev="cat README.md | grep curl | bash"
+alias rebp="source ~/.bash_profile"
+alias rebr="source ~/.bash_rc"
