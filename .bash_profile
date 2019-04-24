@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH"
 
 # set vim as default editor
-export EDITOR='nvim'
+export EDITOR='vim'
 
 # load rbenv
 eval "$(rbenv init -)"
@@ -37,7 +37,7 @@ txtwht='\e[0;37m' # White
 
 txtrst='\e[0m'    # Text Reset`
 
-PS1='\n\[\e[0;36m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
+PS1='\n\[\e[0;35m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
 # ALIAS
 alias be="bundle exec"

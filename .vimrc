@@ -1,5 +1,3 @@
-echo ">^.^<"
-
 ""
 "" Base Config
 ""
@@ -29,7 +27,7 @@ set wildmenu
 set noshowmatch
 
 " Allow the cursor to go in to 'invalid' places
-set virtualedit=all
+"set virtualedit=all
 
 " Turn off error bells
 set noerrorbells visualbell t_vb=
@@ -56,7 +54,7 @@ set expandtab
 set backspace=indent,eol,start
 
 " Do not load pi_paren default plugin
-let loaded_matchparen = 1
+"let loaded_matchparen = 1
 
 " Highlight the curent line
 "set cursorline
@@ -64,6 +62,8 @@ let loaded_matchparen = 1
 " Set column marker at max line length
 set colorcolumn=80
 
+" Turn on mouse mode
+set mouse=a
 
 """
 """ Backup and Swap Files
@@ -102,12 +102,12 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
 " Move line up
-nnoremap ,mM :m .-2<CR>
-vnoremap ,mM :m '<-2<CR>gv
+nnoremap <leader>mM :m .-2<CR>
+vnoremap <leader>mM :m '<-2<CR>gv
 
 " Move line down
-nnoremap ,mm :m .+1<CR>
-vnoremap ,mm :m '>+1<CR>gv
+nnoremap <leader>mm :m .+1<CR>
+vnoremap <leader>mm :m '>+1<CR>gv
 
 
 ""
@@ -120,12 +120,6 @@ syntax enable
 " Set dark background
 set background=dark
 
-" Set solarized colorscheme term
-" let g:solarized_termtrans=1
-
-" Set solarized colorschem to 256 color
-" let g:solarized_termcolors=256
-
 " Set solarized colorscheme
 colorscheme solarized
 
@@ -133,31 +127,30 @@ colorscheme solarized
 highlight MatchParen ctermbg=darkgrey
 
 " Cursor line highlight color
-highlight CursorLine  term=underline  guibg=#555555  ctermbg=236
+highlight CursorLine ctermbg=236
 
 " Active status line color
-highlight StatusLine ctermfg=lightgrey ctermbg=black
+highlight StatusLine ctermbg=white
 
 " Inactive status line color
-highlight StatusLineNC ctermfg=darkgrey ctermbg=white
+highlight StatusLineNC ctermbg=black
 
-highlight CursorLineNr ctermfg=252 ctermbg=240
+" Vertical split line color
+highlight VertSplit ctermbg=NONE
+
 
 ""
 "" System Clipboard
 ""
 
-" Add unamed register to system clipboard
-" set clipboard=unnamed
-
 " Copy relative path to system clipboard
-nnoremap ,cf :let @+=expand("%")<CR>
+nnoremap <leader>cf :let @+=expand("%")<CR>
 
 " Copy absolute path to system clipboard
-nnoremap ,cF :let @+=expand("%:p")<CR>
+nnoremap <leader>cF :let @+=expand("%:p")<CR>
 
 " Copy file name path to system clipboard
-nnoremap ,ct :let @+=expand("%:t")<CR>
+nnoremap <leader>ct :let @+=expand("%:t")<CR>
 
 
 """
@@ -172,9 +165,6 @@ filetype plugin on
 
 " Enable indentation based on filetype
 filetype indent on
-
-" Set filetype to slim when *.skim file is loaded
-autocmd BufNewFile,BufRead *.skim set filetype=slim
 
 
 ""
@@ -193,42 +183,42 @@ set statusline=\ %f\ %m\ %r\ %=\ %{fugitive#statusline()}\ [%v]\ [%l/%L]\ [%p%%]
 ""
 
 " Moving the cursor...
-noremap <silent> ,h :wincmd h<CR>
-noremap <silent> ,j :wincmd j<CR>
-noremap <silent> ,k :wincmd k<CR>
-noremap <silent> ,l :wincmd l<CR>
+noremap <silent> <leader>h :wincmd h<CR>
+noremap <silent> <leader>j :wincmd j<CR>
+noremap <silent> <leader>k :wincmd k<CR>
+noremap <silent> <leader>l :wincmd l<CR>
 
 " Closing the window...
-noremap <silent> ,cc :close<CR>
-noremap <silent> ,cj :wincmd j<CR>:close<CR>
-noremap <silent> ,ck :wincmd k<CR>:close<CR>
-noremap <silent> ,ch :wincmd h<CR>:close<CR>
-noremap <silent> ,cl :wincmd l<CR>:close<CR>
+noremap <silent> <leader>cc :close<CR>
+noremap <silent> <leader>cj :wincmd j<CR>:close<CR>
+noremap <silent> <leader>ck :wincmd k<CR>:close<CR>
+noremap <silent> <leader>ch :wincmd h<CR>:close<CR>
+noremap <silent> <leader>cl :wincmd l<CR>:close<CR>
 
 " Moving the window...
-noremap <silent> ,ml <C-W>L
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
+noremap <silent> <leader>ml <C-W>L
+noremap <silent> <leader>mk <C-W>K
+noremap <silent> <leader>mh <C-W>H
+noremap <silent> <leader>mj <C-W>J
 
 " Equal windows...
-noremap <silent> ,= :wincmd =<CR>
+noremap <silent> <leader>= :wincmd =<CR>
 
 " Open quickfix list widow...
-noremap <silent> ,cw :cw <CR>
+noremap <silent> <leader>cw :cw <CR>
 
 " Tabs
-noremap <silent> ,L :tabnext<CR>
-noremap <silent> ,H :tabprev<CR>
-noremap <silent> ,tn :tabnew<CR>
-noremap <silent> ,tc :tabclose<CR>
-noremap <silent> ,tw :wincmd T<CR>
+noremap <silent> <leader>L :tabnext<CR>
+noremap <silent> <leader>H :tabprev<CR>
+noremap <silent> <leader>tn :tabnew<CR>
+noremap <silent> <leader>tc :tabclose<CR>
+noremap <silent> <leader>tw :wincmd T<CR>
 
 " Resizing panes
-noremap <silent> ,+ :wincmd +<CR>
-noremap <silent> ,- :wincmd -<CR>
-noremap <silent> ,< :wincmd <<CR>
-noremap <silent> ,> :wincmd ><CR>
+noremap <silent> <leader>+ :wincmd +<CR>
+noremap <silent> <leader>- :wincmd -<CR>
+noremap <silent> <leader>< :wincmd <<CR>
+noremap <silent> <leader>> :wincmd ><CR>
 
 
 ""
@@ -287,7 +277,6 @@ let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi
 let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
 let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                                                              " Track browsing dir
-" let g:netrw_liststyle = 3                                                            " Tree list view
 let g:netrw_banner = 0                                                               " Remove banner
 
 
@@ -332,22 +321,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtClear()':           ['<c-u>'],
   \ 'CreateNewFile()':      ['<c-y>']
 \ }
-
-
-"""
-""" Ctrl P
-"""
-
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>r :call RunLastSpec()<CR>
-
-
-"""
-""" IndentLine
-"""
-
-" let g:indentLine_setColors = 0
 
 
 ""
