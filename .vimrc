@@ -109,7 +109,6 @@ vnoremap <leader>mM :m '<-2<CR>gv
 nnoremap <leader>mm :m .+1<CR>
 vnoremap <leader>mm :m '>+1<CR>gv
 
-
 ""
 "" Colors
 ""
@@ -214,11 +213,16 @@ noremap <silent> <leader>tn :tabnew<CR>
 noremap <silent> <leader>tc :tabclose<CR>
 noremap <silent> <leader>tw :wincmd T<CR>
 
+" Maximize / minimize windows
+nnoremap <silent> <leader>+ <C-W>_ <C-W>\|
+nnoremap <silent> <leader>- <C-W>1\|
+nnoremap <silent> <leader>= <C-W>=
+
 " Resizing panes
-noremap <silent> <leader>+ :wincmd +<CR>
-noremap <silent> <leader>- :wincmd -<CR>
-noremap <silent> <leader>< :wincmd <<CR>
-noremap <silent> <leader>> :wincmd ><CR>
+" noremap <silent> <leader>+ :wincmd +<CR>
+" noremap <silent> <leader>- :wincmd -<CR>
+" noremap <silent> <leader>< :wincmd <<CR>
+" noremap <silent> <leader>> :wincmd ><CR>
 
 
 ""
@@ -253,6 +257,7 @@ endfunction
 iab bp binding.pry<esc>
 iab db debugger<esc>
 iab wtf puts "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+iab fsl # frozen_string_literal: true<esc>
 
 
 ""
