@@ -4,11 +4,17 @@ export PATH="$HOME/bin:$PATH"
 # set vim as default editor
 export EDITOR='vim'
 
+export HEROKU_APP='**none'
+
 # load rbenv
 eval "$(rbenv init -)"
 
 # load nodenv
 eval "$(nodenv init -)"
+
+# load yvm
+export YVM_DIR=/usr/local/opt/yvm
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # Load in the git branch prompt script.
 source ~/.git-prompt.sh
