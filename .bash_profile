@@ -9,8 +9,10 @@ export HEROKU_APP='**none'
 # load rbenv
 eval "$(rbenv init -)"
 
-# load nodenv
-eval "$(nodenv init -)"
+# load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load yvm
 export YVM_DIR=/usr/local/opt/yvm
@@ -43,7 +45,7 @@ txtwht='\e[0;37m' # White
 
 txtrst='\e[0m'    # Text Reset`
 
-PS1='\n\[\e[0;35m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
+PS1='\n\[\e[0;33m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
 # ALIAS
 alias be="bundle exec"
