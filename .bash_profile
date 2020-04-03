@@ -6,6 +6,9 @@ export EDITOR='vim'
 
 export HEROKU_APP='**none'
 
+# Load postgresql v9.5 into path
+export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+
 # load rbenv
 eval "$(rbenv init -)"
 
@@ -66,7 +69,7 @@ alias gd="git diff"
 alias rs="rails s"
 alias rc="rails c"
 
-alias postgres-server96="postgres -D /usr/local/var/postgresql\@9.6/"
+alias postgres-server95="postgres -D /usr/local/var/postgresql\@9.5/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
 alias rebp="source ~/.bash_profile"
