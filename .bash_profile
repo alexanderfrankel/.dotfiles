@@ -6,9 +6,6 @@ export EDITOR='vim'
 
 export HEROKU_APP='**none'
 
-# Load postgresql v9.5 into path
-export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
-
 # load rbenv
 eval "$(rbenv init -)"
 
