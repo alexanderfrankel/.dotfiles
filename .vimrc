@@ -174,7 +174,7 @@ filetype indent on
 set laststatus=2
 
 " Status line config
-set statusline=\ %f\ %m\ %r\ %=\ %{fugitive#statusline()}\ [%v]\ [%l/%L]\ [%p%%]
+set statusline=\ %f\ %m\ %r\ %=\ [%v]\ [%l/%L]\ [%p%%]
 
 
 ""
