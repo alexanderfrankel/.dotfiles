@@ -9,6 +9,9 @@ export HEROKU_APP='**none'
 # load rbenv
 eval "$(rbenv init -)"
 
+# load direnv
+eval "$(direnv hook bash)"
+
 # load nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -45,7 +48,7 @@ txtwht='\e[0;37m' # White
 
 txtrst='\e[0m'    # Text Reset`
 
-PS1='\n\[\e[0;33m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
+PS1='\n\[\e[0;32m\]${PWD##*/}\[\e[m\]$(__git_ps1) -> '
 
 # ALIAS
 alias be="bundle exec"
@@ -68,6 +71,8 @@ alias rc="rails c"
 
 alias postgres-server95="postgres -D /usr/local/var/postgresql\@9.5/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
+
+alias mongo-server="mongod --config /usr/local/etc/mongod.conf"
 
 alias rebp="source ~/.bash_profile"
 alias rebr="source ~/.bash_rc"
