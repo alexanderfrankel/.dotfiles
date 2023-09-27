@@ -24,7 +24,7 @@ set hidden
 set wildmenu
 
 " Do not show matching parens
-set noshowmatch
+set showmatch
 
 " Allow the cursor to go in to 'invalid' places
 "set virtualedit=all
@@ -57,7 +57,7 @@ set backspace=indent,eol,start
 "let loaded_matchparen = 1
 
 " Highlight the curent line
-"set cursorline
+" set cursorline
 
 " Set column marker at max line length
 set colorcolumn=80
@@ -255,7 +255,7 @@ endfunction
 ""
 
 iab bp binding.pry<esc>
-iab db debugger<esc>
+" iab db debugger<esc>
 iab wtf puts "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 iab fsl # frozen_string_literal: true<esc>
 
@@ -272,6 +272,17 @@ nnoremap <C-l> :nohlsearch<CR>
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 nnoremap n nzz
+
+
+""
+"" Formatting
+""
+
+" Disable quote concealing in JSON files
+let g:vim_json_conceal=0
+
+" Format JSON file
+nmap =j :%!python -m json.tool<CR>
 
 
 ""
@@ -314,7 +325,7 @@ let g:ctrlp_tabpage_position = 'c'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_show_hidden = 1
 "let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|Gemfile.lock|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$|\.ts$|\.tsx$|\.jsx$|\.env$"'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|Gemfile.lock|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$|\.ts$|\.tsx$|\.jsx$|\.ts$|\.tsx$|\.env$|\.keep$"'
 "let g:ctrlp_use_caching = 0
 let g:ctrlp_max_depth = 30
 let g:ctrlp_max_files = 0

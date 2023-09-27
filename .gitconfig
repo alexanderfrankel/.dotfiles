@@ -7,5 +7,3 @@
 	editor = vim
 	excludesfile = /Users/alexanderfrankel/.gitignore
 [alias]
-[url "ssh://git@heroku.com/"]
-	insteadOf = https://git.heroku.com/

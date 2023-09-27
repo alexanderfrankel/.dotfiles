@@ -1,25 +1,28 @@
 # Add ~/bin to $PATH for access to personal scripts
-export PATH="$HOME/bin:$PATH"
+# export PATH="$HOME/bin:$PATH"
+
+# Add ~/.docker/bin to $PATH for access to Docker cli tools
+export PATH="$HOME/.docker/bin:$PATH"
 
 # set vim as default editor
 export EDITOR='vim'
 
-export HEROKU_APP='**none'
+# export HEROKU_APP='**none'
 
 # load rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # load direnv
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
 
 # load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # load yvm
-export YVM_DIR=/usr/local/opt/yvm
-[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
+# export YVM_DIR=/usr/local/opt/yvm
+# [ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 # Load in the git branch prompt script.
 source ~/.git-prompt.sh
@@ -66,9 +69,6 @@ alias gb="git branch"
 alias gr="git remote"
 alias gd="git diff"
 
-alias rs="rails s"
-alias rc="rails c"
-
 alias postgres-server95="postgres -D /usr/local/var/postgresql\@9.5/"
 alias postgres-server="postgres -D /usr/local/var/postgres"
 
@@ -76,3 +76,8 @@ alias mongo-server="mongod --config /usr/local/etc/mongod.conf"
 
 alias rebp="source ~/.bash_profile"
 alias rebr="source ~/.bash_rc"
+
+#macro to kill the docker desktop app and the VM (excluding vmnetd -> it's a service)
+function killdocker() {
+  ps ax|grep -i docker|egrep -iv 'grep|com.docker.vmnetd'|awk '{print $1}'|xargs kill
+}
