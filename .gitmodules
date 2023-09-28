@@ -10,6 +10,6 @@
 [submodule ".vim/pack/plugins/start/tcomment_vim"]
 	path = .vim/pack/plugins/start/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule ".vim/pack/plugins/start/ack.vim"]
-	path = .vim/pack/plugins/start/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
