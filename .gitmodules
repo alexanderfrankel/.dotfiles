@@ -13,3 +13,6 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule ".vim/pack/plugins/start/ack.vim"]
+	path = .vim/pack/plugins/start/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
