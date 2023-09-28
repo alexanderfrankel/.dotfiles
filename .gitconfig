@@ -7,3 +7,7 @@
 	editor = vim
 	excludesfile = /Users/alexanderfrankel/.gitignore
 [alias]
+	gs = status
+	ga = add
+	gcm = 'commit -m'
+	gcv = 'commit -v'
