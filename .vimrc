@@ -3,7 +3,7 @@
 ""
 
 " Use vim, no vi defaults
-set nocompatible      " Use vim, no vi defaults
+set nocompatible
 
 " Show line numbers
 set number
@@ -119,11 +119,11 @@ syntax enable
 " Set dark background
 set background=dark
 
-" Set solarized colorscheme
-colorscheme solarized
+" Set colorscheme
+colorscheme torte
 
 " Match parens highlight color
-highlight MatchParen ctermbg=darkgrey
+" highlight MatchParen ctermbg=darkgrey
 
 " Cursor line highlight color
 highlight CursorLine ctermbg=236
@@ -254,10 +254,11 @@ endfunction
 "" Abbreviations
 ""
 
-iab bp binding.pry<esc>
+" iab bp binding.pry<esc>
 " iab db debugger<esc>
-iab wtf puts "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
-iab fsl # frozen_string_literal: true<esc>
+" iab wtf puts "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+" iab fsl # frozen_string_literal: true<esc>
+" iab cl console.log()<esc>
 
 
 ""
@@ -289,7 +290,7 @@ nmap =j :%!python -m json.tool<CR>
 "" Netrw
 ""
 
-let g:netrw_list_hide= '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$'   " Hide filetypes in explorer
+let g:netrw_list_hide = '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$,\.DS_Store$'   " Hide filetypes in explorer
 let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
 let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
 let g:netrw_keepdir = 0                                                              " Track browsing dir
@@ -300,10 +301,10 @@ let g:netrw_banner = 0                                                          
 "" Vim-Gist
 ""
 
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
+" let g:gist_clip_command = 'pbcopy'
+" let g:gist_detect_filetype = 1
+" let g:gist_open_browser_after_post = 1
+" let g:gist_post_private = 1
 
 
 """
@@ -338,13 +339,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'CreateNewFile()':      ['<c-y>']
 \ }
 
-
-""
-"" Pathogen Config
-""
-
-execute pathogen#infect()
-Helptags
 
 ""
 "" Enable Default Plugins
