@@ -43,6 +43,24 @@ function killdocker() {
 }
 
 
+### fzf
+# Add fzf to path if not already there
+if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+fi
+
+# Enable auto-completion
+[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+# Enable key-bindings
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+
+# Set default command
+# export FZF_DEFAULT_COMMAND='find *(D) -type f'
+
+# Apply default command to Ctrl-T
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 ### Command prompt
 PROMPT='%B%F{220}MBP%f %F{243}%~%f%b %# '
 
@@ -56,3 +74,5 @@ zstyle ':vcs_info:*' enable git
 
 # ^[[A' up-line-or-search # up arrow bindkey
 # ^[[B' down-line-or-search # down arrow
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

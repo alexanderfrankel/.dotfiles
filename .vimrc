@@ -287,64 +287,36 @@ nmap =j :%!python -m json.tool<CR>
 
 
 ""
+"" Enable Default Plugins
+""
+packadd! matchit
+
+
+""
 "" Netrw
 ""
 
-let g:netrw_list_hide = '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$,\.DS_Store$'   " Hide filetypes in explorer
-let g:netrw_alto = 1                                                                 " Open hsplit below current using 'o'
-let g:netrw_altv = 1                                                                 " Open vsplit right current using 'v'
-let g:netrw_keepdir = 0                                                              " Track browsing dir
-let g:netrw_banner = 0                                                               " Remove banner
-
-
-""
-"" Vim-Gist
-""
-
-" let g:gist_clip_command = 'pbcopy'
-" let g:gist_detect_filetype = 1
-" let g:gist_open_browser_after_post = 1
-" let g:gist_post_private = 1
+let g:netrw_list_hide = '.*\.swp$,\.swo$,\.swm$,\.swn$,\.swj$,\.swk$,\.swl$,\.swi$,\.DS_Store$'  " Hide filetypes in explorer
+let g:netrw_alto = 1                                                                             " Open hsplit below current using 'o'
+let g:netrw_altv = 1                                                                             " Open vsplit right current using 'v'
+let g:netrw_keepdir = 0                                                                          " Track browsing dir
+let g:netrw_banner = 0                                                                           " Remove banner
 
 
 """
 """ Ack
 """
 
-nnoremap ,a :Ag!
-let g:ag_prg="ag --case-sensitive --vimgrep"
-let g:ag_working_path_mode="r"
+" nnoremap ,a :Ag!
+" let g:ag_prg="ag --case-sensitive --vimgrep"
+" let g:ag_working_path_mode="r"
 
 
 """
-""" Ctrl P
+""" fzf
 """
 
-let g:ctrlp_regexp = 1
-let g:ctrlp_switch_buffer = 'E'
-let g:ctrlp_tabpage_position = 'c'
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_show_hidden = 1
-"let g:ctrlp_user_command = 'find %s -type f | grep -E "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$"'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g "\.conf$|\.rb$|\.sh$|\.bash$|\.json$|\.coffee$|\.scss$|\.skim$|\.haml$|\.slim$|\.sass$|\.erb$|\.js$|\.yml$|Gemfile|Gemfile.lock|\.rake$|\.sql$|\.arb$|\.jbuilder$|\.csv$|\.md$|\.ts$|\.tsx$|\.jsx$|\.ts$|\.tsx$|\.env$|\.keep$"'
-"let g:ctrlp_use_caching = 0
-let g:ctrlp_max_depth = 30
-let g:ctrlp_max_files = 0
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_open_multiple_files = '1ri'
-let g:ctrlp_match_window = 'max:20'
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtDeleteWord()':      ['<c-w>'],
-  \ 'PrtClear()':           ['<c-u>'],
-  \ 'CreateNewFile()':      ['<c-y>']
-\ }
-
-
-""
-"" Enable Default Plugins
-""
-
-packadd! matchit
+set rtp+=/opt/homebrew/opt/fzf
 
 
 ""
