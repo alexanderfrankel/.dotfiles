@@ -5,6 +5,9 @@
 " Use vim, no vi defaults
 set nocompatible
 
+" Set keycode delay
+set ttimeoutlen=0
+
 " Show line numbers
 set number
 
@@ -120,7 +123,7 @@ syntax enable
 set background=dark
 
 " Set colorscheme
-colorscheme torte
+colorscheme solarized
 
 " Match parens highlight color
 " highlight MatchParen ctermbg=darkgrey
@@ -304,19 +307,17 @@ let g:netrw_banner = 0                                                          
 
 
 """
-""" Ack
-"""
-
-" nnoremap ,a :Ag!
-" let g:ag_prg="ag --case-sensitive --vimgrep"
-" let g:ag_working_path_mode="r"
-
-
-"""
 """ fzf
 """
 
+" Include fzf in runtime path
 set rtp+=/opt/homebrew/opt/fzf
+
+" Map Ctrl-t to open fzf file explorer
+nnoremap <silent> <C-t> :Files<CR>
+
+" Map Ctrl-t to open fzf text search (relaunch ripgrep)
+nnoremap <silent> <C-g> :RG<CR>
 
 
 ""

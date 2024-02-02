@@ -4,6 +4,9 @@ export PATH="/opt/homebrew/bin:$PATH"
 # Set vim as default editor
 export EDITOR='vim'
 
+# Set key sequence timeout
+export KEYTIMEOUT=1
+
 # Set globbing to be case-insensitive
 setopt NO_CASE_GLOB
 
@@ -33,7 +36,8 @@ alias gs='git status'
 alias ga='git add'
 alias gcm='git commit -m'
 alias gcv='git commit -v'
-alias rezrc='source ~/.zshrc'
+alias gd='git diff'
+alias rezsh='source ~/.zshrc'
 
 ### Functions
 
@@ -56,7 +60,13 @@ fi
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
 # Set default command
-# export FZF_DEFAULT_COMMAND='find *(D) -type f'
+export FZF_DEFAULT_COMMAND='find . \! \( -path ./.git -prune \)'
+
+# Set default options
+export FZF_DEFAULT_OPTS="-m \
+                        --height 50% \
+                        --border \
+                        --preview 'bat --color=always {1}'"
 
 # Apply default command to Ctrl-T
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -64,6 +74,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 ### Command prompt
 PROMPT='%B%F{220}MBP%f %F{243}%~%f%b %# '
 
+# Git info
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -71,8 +82,3 @@ setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{243}(%r|%b)%f'
 zstyle ':vcs_info:*' enable git
-
-# ^[[A' up-line-or-search # up arrow bindkey
-# ^[[B' down-line-or-search # down arrow
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
