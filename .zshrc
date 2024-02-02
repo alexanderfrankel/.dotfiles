@@ -31,6 +31,10 @@ setopt HIST_FIND_NO_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 
+### Auto completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 ### Alias
 alias gs='git status'
 alias ga='git add'
@@ -45,7 +49,6 @@ alias rezsh='source ~/.zshrc'
 function killdocker() {
   ps ax|grep -i docker|egrep -iv 'grep|com.docker.vmnetd'|awk '{print $1}'|xargs kill
 }
-
 
 ### fzf
 # Add fzf to path if not already there
@@ -72,13 +75,14 @@ export FZF_DEFAULT_OPTS="-m \
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ### Command prompt
-PROMPT='%B%F{220}MBP%f %F{243}%~%f%b %# '
 
 # Git info
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{243}(%r|%b)%f'
+zstyle ':vcs_info:git:*' formats '%F{250}(%b)%f'
 zstyle ':vcs_info:*' enable git
+
+# Prompt
+PROMPT='%B%F{147}MBP%f %F{252}%~%f%b ${vcs_info_msg_0_} %# '
