@@ -313,11 +313,21 @@ let g:netrw_banner = 0                                                          
 " Include fzf in runtime path
 set rtp+=/opt/homebrew/opt/fzf
 
+" Find git root dir function
+function! FindGitRoot()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! -bang ProjectFiles call fzf#vim#files(FindGitRoot(), <bang>0)
+command! -bang ProjectRG call fzf#vim#grep2(
+      \ "rg --column --line-number --no-heading --color=always --smart-case -- ",
+      \ <q-args>, fzf#vim#with_preview({'dir': FindGitRoot()}), <bang>0)
+
 " Map Ctrl-t to open fzf file explorer
-nnoremap <silent> <C-t> :Files<CR>
+nnoremap <silent> <C-t> :ProjectFiles<CR>
 
 " Map Ctrl-t to open fzf text search (relaunch ripgrep)
-nnoremap <silent> <C-g> :RG<CR>
+nnoremap <silent> <C-g> :ProjectRG<CR>
 
 
 ""
